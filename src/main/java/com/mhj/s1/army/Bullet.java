@@ -1,9 +1,8 @@
-package com.mhj.s1;
+package com.mhj.s1.army;
 
 import org.springframework.stereotype.Component;
 
 @Component
-
 public class Bullet {
 	
 	public void sound() {

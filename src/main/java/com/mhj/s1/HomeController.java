@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.mhj.s1.army.Soldier;
+
 /**
  * Handles requests for the application home page.
  */
@@ -30,7 +32,9 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		soldier.useGun();
+//		soldier.useGun();
+		System.out.println(soldier.getName());
+		System.out.println(soldier.getAge());
 		
 //		Soldier soldier = new Soldier();
 //		Bullet bullet = new Bullet();
