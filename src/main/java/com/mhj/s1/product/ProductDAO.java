@@ -52,7 +52,7 @@ public class ProductDAO {
 			productOptionDTO.setProductNum(rs.getLong("PRODUCTNUM"));
 			productOptionDTO.setOptionName(rs.getString("OPTIONNAME"));
 			productOptionDTO.setOptionPrice(rs.getLong("OPTIONPRICE"));
-			productOptionDTO.setOptionAmount(rs.getLong("OPTIONAMOUNT"));
+			productOptionDTO.setOptionStock(rs.getLong("OPTIONSTOCK"));
 			ar.add(productOptionDTO);
 		}
 		
@@ -73,7 +73,7 @@ public class ProductDAO {
 		st.setLong(1, productOptionDTO.getProductNum());
 		st.setString(2, productOptionDTO.getOptionName());
 		st.setLong(3, productOptionDTO.getOptionPrice());
-		st.setLong(4, productOptionDTO.getOptionAmount());
+		st.setLong(4, productOptionDTO.getOptionStock());
 		
 		int result = st.executeUpdate();
 		
@@ -118,7 +118,7 @@ public class ProductDAO {
 		
 		Connection con = DBConnection.getConnection();
 		
-		String sql = "SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTJUMSU "
+		String sql = "SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTRATING "
 				+ "FROM PRODUCT ORDER BY PRODUCTJUMSU DESC";
 		
 		PreparedStatement st = con.prepareStatement(sql);
@@ -143,7 +143,7 @@ public class ProductDAO {
 	public int setAddProduct(ProductDTO productDTO)throws Exception{
 		Connection con = DBConnection.getConnection();
 		
-		String sql = "INSERT INTO PRODUCT (PRODUCTNUM, PRODUCTNAME, PRODUCTDETAIL, PRODUCTJUMSU) "
+		String sql = "INSERT INTO PRODUCT (PRODUCTNUM, PRODUCTNAME, PRODUCTDETAIL, PRODUCTRATING) "
 				+ "VALUES (?,?,?,0.0)";
 		
 		PreparedStatement st = con.prepareStatement(sql);

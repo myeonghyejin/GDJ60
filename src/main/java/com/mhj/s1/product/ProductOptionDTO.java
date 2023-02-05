@@ -6,7 +6,7 @@ public class ProductOptionDTO {
 	private Long productNum;
 	private String optionName;
 	private Long optionPrice;
-	private Long optionAmount;
+	private Long optionStock;
 	
 	//setter, getter
 	
@@ -34,11 +34,11 @@ public class ProductOptionDTO {
 	public void setOptionPrice(Long optionPrice) {
 		this.optionPrice = optionPrice;
 	}
-	public Long getOptionAmount() {
-		return optionAmount;
+	public Long getOptionStock() {
+		return optionStock;
 	}
-	public void setOptionAmount(Long optionAmount) {
-		this.optionAmount = optionAmount;
+	public void setOptionStock(Long optionStock) {
+		this.optionStock = optionStock;
 	}
 
 }
