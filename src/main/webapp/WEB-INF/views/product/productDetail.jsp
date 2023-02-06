@@ -16,7 +16,7 @@
 	
 	<hr>
 	<h3>${requestScope.DTO.productName}</h3>
-	<h3>${dto.getProductDetail()}</h3>
-	<h3>${dto.productRating * DTO.productNum}</h3>
+	<h3>${DTO.getProductDetail()}</h3>
+	<h3>${DTO.productRating * DTO.productNum}</h3>
 </body>
 </html>

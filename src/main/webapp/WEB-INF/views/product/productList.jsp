@@ -33,10 +33,10 @@
 		
 		<tbody>
 	
-			<c:forEach items="${list}" var="dto"> <!-- DTO는 page영역에 담김 -->
+			<c:forEach items="${list}" var="DTO"> <!-- DTO는 page영역에 담김 -->
 				<tr>
 					<td><a href="./detail?productNum=${DTO.productNum}">${pageScope.DTO.productName}</a></td>
-					<td>${dto.productRating}</td>
+					<td>${DTO.productRating}</td>
 				</tr>
 			</c:forEach>
 	
