@@ -119,7 +119,7 @@ public class ProductDAO {
 		Connection con = DBConnection.getConnection();
 		
 		String sql = "SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTRATING "
-				+ "FROM PRODUCT ORDER BY PRODUCTJUMSU DESC";
+				+ "FROM PRODUCT ORDER BY PRODUCTRATING DESC";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		

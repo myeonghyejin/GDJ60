@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Product Update Page</h1>
+	<h1>Product Update page</h1>
 </body>
 </html>
