@@ -6,12 +6,45 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mhj.s1.util.DBConnection;
 
 @Repository
 public class ProductDAO {
+	
+	@Autowired
+	private SqlSession sqlSession;
+	private final String NAMESPACE="com.mhj.s1.product.ProductDAO.";
+	
+	//delete
+	public int setProductDelete(Long productNum) throws Exception {
+		int result = 0;
+		
+		//1. DB 연결
+		Connection connection = DBConnection.getConnection();
+		
+		//2. SQL문 작성
+		String sql = "DELETE PRODUCT WHERE PRODUCTNUM = ?";
+		
+		//3. SQL 미리 보냄
+		PreparedStatement st = connection.prepareStatement(sql);
+		
+		//4. ? 세팅
+		st.setLong(1, productNum);
+		
+		//5. 최종 전송 및 결과 처리
+		result = st.executeUpdate();
+		
+		//6. 연결 해제
+		DBConnection.disConnection(st, connection);
+		
+		return result;
+	}
 	
 	//getMax
 	public Long getProductNum()throws Exception{
@@ -87,74 +120,22 @@ public class ProductDAO {
 	//getProductDetail
 	public ProductDTO getProductDetail(ProductDTO productDTO)throws Exception{
 		
-		Connection con = DBConnection.getConnection();
-		
-		String sql ="SELECT * FROM PRODUCT WHERE PRODUCTNUM=?";
-		
-		PreparedStatement st = con.prepareStatement(sql);
-		
-		st.setLong(1, productDTO.getProductNum());
-		
-		ResultSet rs = st.executeQuery();
-		
-		if(rs.next()) {
-			productDTO = new ProductDTO();
-			productDTO.setProductNum(rs.getLong("PRODUCTNUM"));
-			productDTO.setProductName(rs.getString("PRODUCTNAME"));
-			productDTO.setProductRating(rs.getDouble("PRODUCTRATING"));
-			productDTO.setProductDetail(rs.getString("PRODUCTDETAIL"));
-		}else {
-			productDTO=null;
-		}
-		DBConnection.disConnection(rs, st, con);
-		return productDTO;
+		return sqlSession.selectOne(NAMESPACE+"getProductDetail", productDTO);
 		
 	}
 	
 	//--------------------------------------
 	
 	public List<ProductDTO> getProductList()throws Exception{
-		ArrayList<ProductDTO> ar = new ArrayList<ProductDTO>();
-		
-		Connection con = DBConnection.getConnection();
-		
-		String sql = "SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTRATING "
-				+ "FROM PRODUCT ORDER BY PRODUCTJUMSU DESC";
-		
-		PreparedStatement st = con.prepareStatement(sql);
-		
-		ResultSet rs = st.executeQuery();
-		
-		while(rs.next()) {
-			ProductDTO productDTO = new ProductDTO();
-			productDTO.setProductNum(rs.getLong("PRODUCTNUM"));
-			productDTO.setProductName(rs.getString("PRODUCTNAME"));
-			productDTO.setProductRating(rs.getDouble("PRODUCTRATING"));
-			ar.add(productDTO);
-		}
-		
-		DBConnection.disConnection(rs, st, con);
-		
-		return ar;
+
+		return sqlSession.selectList(NAMESPACE+"getProductList");
 	}
 	
 	//--------------------------------------
 	
 	public int setAddProduct(ProductDTO productDTO)throws Exception{
-		Connection con = DBConnection.getConnection();
-		
-		String sql = "INSERT INTO PRODUCT (PRODUCTNUM, PRODUCTNAME, PRODUCTDETAIL, PRODUCTRATING) "
-				+ "VALUES (?,?,?,0.0)";
-		
-		PreparedStatement st = con.prepareStatement(sql);
-		st.setLong(1, productDTO.getProductNum());
-		st.setString(2, productDTO.getProductName());
-		st.setString(3, productDTO.getProductDetail());
-		//st.setDouble(3, productDTO.getProductRating());
-		
-		int result = st.executeUpdate();
-		DBConnection.disConnection(st, con);
-		return result;	
+
+		return sqlSession.insert(NAMESPACE+"setAddProduct", productDTO);	
 	}
 	
 }
