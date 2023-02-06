@@ -1,46 +1,47 @@
 package com.mhj.s1.member;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberDTO {
 	
-	private Long optionNum;
-	private Long productNum;
-	private String optionName;
-	private Long optionPrice;
-	private Long optionStock;
+	private String id;
+	private String pw;
+	private String name;
+	private String phone;
+	private String email;
 	
 	//getter, setter
 	
-	public Long getOptionNum() {
-		return optionNum;
+	public String getId() {
+		return id;
 	}
-	public void setOptionNum(Long optionNum) {
-		this.optionNum = optionNum;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public Long getProductNum() {
-		return productNum;
+	public String getPw() {
+		return pw;
 	}
-	public void setProductNum(Long productNum) {
-		this.productNum = productNum;
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
-	public String getOptionName() {
-		return optionName;
+	public String getName() {
+		return name;
 	}
-	public void setOptionName(String optionName) {
-		this.optionName = optionName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public Long getOptionPrice() {
-		return optionPrice;
+	public String getPhone() {
+		return phone;
 	}
-	public void setOptionPrice(Long optionPrice) {
-		this.optionPrice = optionPrice;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public Long getOptionStock() {
-		return optionStock;
+	public String getEmail() {
+		return email;
 	}
-	public void setOptionStock(Long optionStock) {
-		this.optionStock = optionStock;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
-	
 
 }

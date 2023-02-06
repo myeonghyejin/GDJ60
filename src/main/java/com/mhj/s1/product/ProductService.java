@@ -11,8 +11,6 @@ public class ProductService {
 	@Autowired
 	private ProductDAO productDAO;
 	
-	
-	
 	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception {
 		return productDAO.getProductDetail(productDTO);
 	}

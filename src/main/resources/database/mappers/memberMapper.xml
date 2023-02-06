@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.mhj.s1.member.MemberDAO">
+  	<select id="getMemberList" resultType="MemberDTO">
+  		SELECT MEMBERID, MEMBERPW, MEMBERNAME, MEMBERADDRESS, MEMBERPHONE, MEMBEREMAIL
+  		FROM MEMBER
+  		ORDER BY MEMBERID DESC
+  	</select>
+  	
+  	<insert id="memberJoin" parameterType="memberDTO">
+  		INSERT INTO MEMBER
+  		VALUES (#{memberID}, #{memberPW}, #{memberName}, #{memberAddress}, #{memberPhone}, #{memberEmail})
+  	</insert>
+  </mapper>
