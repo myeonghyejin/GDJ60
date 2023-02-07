@@ -12,7 +12,6 @@ public class MemberDTO {
 	private String email;
 	
 	//getter, setter
-	
 	public String getId() {
 		return id;
 	}

@@ -20,6 +20,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	//getProductList
 	@RequestMapping(value="list")
 	public ModelAndView getProductList(ModelAndView mv) throws Exception {
 		//ModelAndView mv = new ModelAndView();
@@ -51,6 +52,7 @@ public class ProductController {
 		return "product/productDetail";
 	}
 	
+	//productAdd
 	@RequestMapping(value="productAdd", method = RequestMethod.GET)
 	public void productAdd() {
 		
@@ -63,6 +65,7 @@ public class ProductController {
 		return "redirect:./list";
 	}
 	
+	//update
 	@RequestMapping(value = "update")
 	public ModelAndView update() {
 		ModelAndView mv = new ModelAndView();

@@ -9,7 +9,6 @@ public class ProductOptionDTO {
 	private Long optionStock;
 	
 	//setter, getter
-	
 	public Long getOptionNum() {
 		return optionNum;
 	}
