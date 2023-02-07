@@ -22,12 +22,12 @@ public class MemberController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="join")
+	@RequestMapping(value="memberJoin")
 	public ModelAndView memberJoin(ModelAndView modelAndView) throws Exception {
 		MemberDTO memberDTO = new MemberDTO();
 		
 		modelAndView.setViewName("member/memberJoin");
-		modelAndView.addObject("join", memberDTO);
+		modelAndView.addObject("memberJoin", memberDTO);
 		return modelAndView;
 	}
 	

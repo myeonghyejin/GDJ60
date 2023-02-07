@@ -11,28 +11,28 @@ public class ProductService {
 	@Autowired
 	private ProductDAO productDAO;
 	
+	//getProductList
+	public List<ProductDTO> getProductList() throws Exception{
+		return productDAO.getProductList();
+	}
+
+	//getProductDetail
 	public ProductDTO getProductDetail(ProductDTO productDTO) throws Exception {
 		return productDAO.getProductDetail(productDTO);
 	}
 	
-	public List<ProductDTO> getProductList() throws Exception{
-		return productDAO.getProductList();
-	}
-	
-	
-	public int setAddProduct(ProductDTO productDTO, List<ProductOptionDTO> ar) throws Exception{
+	//setProductAdd
+	public int setProductAdd(ProductDTO productDTO, List<ProductOptionDTO> ar) throws Exception{
 		Long productNum = productDAO.getProductNum();
 		productDTO.setProductNum(productNum);
-		int result = productDAO.setAddProduct(productDTO);
+		int result = productDAO.setProductAdd(productDTO);
 		
 		if(ar != null) {
-		
 			for(ProductOptionDTO productOptionDTO:ar) {
 				productOptionDTO.setProductNum(productNum);
-				result = productDAO.setAddProductOption(productOptionDTO);
+				result = productDAO.setProductOptionAdd(productOptionDTO);
 			}
-		}
-		
+		}	
 		return result;	
 	}
 

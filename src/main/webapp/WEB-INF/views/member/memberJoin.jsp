@@ -9,7 +9,7 @@
 <body>
 	<h3>Member Join Page</h3>
 	<div class = "col-6">
-		<form action="./join" method="post">
+		<form action="./memberJoin" method="post">
 			<p>ID
 			<input type="text" name="id"></p>
 			<p>Password

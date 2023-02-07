@@ -33,7 +33,5 @@ public class ProductDTO {
 	public void setProductRating(Double productRating) {
 		this.productRating = productRating;
 	}
-	
-	
 
 }
