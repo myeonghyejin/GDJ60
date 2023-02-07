@@ -14,6 +14,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	//getMemberList
 	@RequestMapping(value="list")
 	public ModelAndView getMemberList(ModelAndView modelAndView) throws Exception {
 		List<MemberDTO> ar = memberService.getMemberList();
@@ -22,6 +23,7 @@ public class MemberController {
 		return modelAndView;
 	}
 
+	//memberJoin
 	@RequestMapping(value="memberJoin")
 	public ModelAndView memberJoin(ModelAndView modelAndView) throws Exception {
 		MemberDTO memberDTO = new MemberDTO();
