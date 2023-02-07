@@ -22,4 +22,24 @@ public class ProductDAOTest extends MyTestCase {
 		assertNotEquals(0, ar.size());
 	}
 
+	//getProductDetail
+	@Test
+	public void getProductDetail() throws Exception {
+		ProductDTO productDTO = new ProductDTO();
+		productDTO.setProductNum(10L);
+		productDTO = productDAO.getProductDetail(productDTO);
+		assertNotNull(productDTO);
+	}
+	
+	//insert
+	@Test
+	public void setProductAddTest() throws Exception {
+		ProductDTO productDTO = new ProductDTO();
+		productDTO.setProductNum(50L);
+		productDTO.setProductName("kong pencil");
+		productDTO.setProductDetail("so cute");
+		int result = productDAO.setProductAdd(productDTO);
+		assertEquals(1, result);
+	}
+	
 }
