@@ -8,7 +8,6 @@ public class ProductDTO {
 	private Double productRating;
 	
 	//getter, setter
-	
 	public Long getProductNum() {
 		return productNum;
 	}

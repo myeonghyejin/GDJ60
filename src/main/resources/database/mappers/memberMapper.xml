@@ -6,13 +6,13 @@
   
   <mapper namespace="com.mhj.s1.member.MemberDAO">
   	<select id="getMemberList" resultType="MemberDTO">
-  		SELECT ID, PW, NAME, PHONE, EMAIL
-  		FROM BANKMEMBERS
+  		SELECT MEMBERID, MEMBERPW, MEMBERNAME, MEMBERADDRESS, MEMBERPHONE, MEMBEREMAIL
+  		FROM MEMBER
   		ORDER BY ID DESC
   	</select>
   	
   	<insert id="memberJoin" parameterType="memberDTO">
-  		INSERT INTO BANKMEMBERS
-  		VALUES (#{id}, #{pw}, #{name}, #{phone}, #{email})
+  		INSERT INTO MEMBER
+  		VALUES (#{memberId}, #{memberPw}, #{memberName}, #{memberPhone}, #{memberEmail})
   	</insert>
   </mapper>
