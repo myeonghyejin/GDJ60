@@ -6,7 +6,7 @@
   
   <mapper namespace="com.mhj.s1.product.ProductDAO">
   	<select id="getProductList" resultType="ProductDTO">
-  		SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTRATING
+  		SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTJUMSU
   		FROM PRODUCT
   		ORDER BY PRODUCTNUM DESC
   	</select>
@@ -15,7 +15,7 @@
 		SELECT * FROM PRODUCT WHERE PRODUCTNUM=#{productNum}
 	</select>
 	
-	<insert id="setAddProduct" parameterType="ProductDTO">
+	<insert id="setProductAdd" parameterType="ProductDTO">
 		INSERT INTO PRODUCT
 		VALUES (#{productNum}, #{productName}, #{productDetail}, 0.0)
 	</insert>
