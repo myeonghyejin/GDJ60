@@ -11,15 +11,15 @@
 	<div class = "col-6">
 		<form action="./memberJoin" method="post">
 			<p>ID
-			<input type="text" name="id"></p>
+			<input type="text" name="memberId"></p>
 			<p>Password
-			<input type="password" name="pw"></p>
+			<input type="password" name="memberPw"></p>
 			<p>이름
-			<input type="text" name="name"></p>
+			<input type="text" name="memberName"></p>
 			<p>전화 번호
-			<input type="tel" name="phone"></p>
+			<input type="tel" name="memberPhone"></p>
 			<p>E-mail
-			<input type="email" name="email"></p>
+			<input type="email" name="memberEmail"></p>
 			<p><button type="submit">등록</button></p>
 		</form>
 	</div>

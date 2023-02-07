@@ -18,11 +18,11 @@
 		List<MemberDTO> ar = (List<MemberDTO>)request.getAttribute("list");
 		for(MemberDTO memberDTO : ar) {
 	%>
-		<h3><%= memberDTO.getId() %></h3>
-		<h3><%= memberDTO.getPw() %></h3>
-		<h3><%= memberDTO.getName() %></h3>
-		<h3><%= memberDTO.getPhone() %></h3>
-		<h3><%= memberDTO.getEmail() %></h3>
+		<h3><%= memberDTO.getMemberId() %></h3>
+		<h3><%= memberDTO.getMemberPw() %></h3>
+		<h3><%= memberDTO.getMemberName() %></h3>
+		<h3><%= memberDTO.getMemberPhone() %></h3>
+		<h3><%= memberDTO.getMemberEmail() %></h3>
 	<%} %> --%>
 	
 	<div class="col-6">
@@ -35,11 +35,12 @@
 		<tbody>
 			<c:forEach items="${list}" var="DTO">
 				<tr>
-					<td>${DTO.id}</td>
-					<td>${DTO.pw}</td>
-					<td>${DTO.name}</td>
-					<td>${DTO.phone}</td>
-					<td>${DTO.email}</td>
+					<td>${DTO.memberId}</td>
+					<td>${DTO.memberPw}</td>
+					<td>${DTO.memberName}</td>
+					<td>${DTO.memberAderess}</td>
+					<td>${DTO.memberPhone}</td>
+					<td>${DTO.memberEmail}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
