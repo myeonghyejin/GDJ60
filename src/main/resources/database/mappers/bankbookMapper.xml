@@ -23,7 +23,7 @@
   	<!-- UPDATE -->
   	<update id="setBankbookUpdate" parameterType="BankbookDTO">
   		UPDATE BANKBOOK
-  		SET BOOKNAME, BOOKDETAIL, BOOKRATE, BOOKSALE
+  		SET BOOKNAME=#{bookName}, BOOKDETAIL=#{bookDetail}, BOOKRATE=#{bookRate}, BOOKSALE=#{bookSale}
   		WHERE BOOKNUM=#{bookNum}
   	</update>
   	
