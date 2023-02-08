@@ -18,7 +18,7 @@ public class MemberController {
 	@RequestMapping(value="list")
 	public ModelAndView getMemberList(ModelAndView modelAndView) throws Exception {
 		List<MemberDTO> ar = memberService.getMemberList();
-		modelAndView.setViewName("member/MemberList");
+		modelAndView.setViewName("member/memberList");
 		modelAndView.addObject("list", ar);
 		return modelAndView;
 	}
