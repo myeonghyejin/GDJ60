@@ -18,7 +18,7 @@
 		for(ProductDTO productDTO:ar){
 	%>
 		<h3><%= productDTO.getProductName() %></h3>
-		<h3><%= productDTO.getProductRating() %></h3>
+		<h3><%= productDTO.getProductJumsu() %></h3>
 	<%} %>
 	
 	<hr>

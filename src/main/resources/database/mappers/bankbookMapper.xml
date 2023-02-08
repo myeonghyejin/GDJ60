@@ -15,10 +15,13 @@
   	</select>
   	
   	<!-- INSERT -->
-  	<insert id="setBankbookAdd" parameterType="Long">
+  	<insert id="setBankbookAdd" parameterType="BankbookDTO">
   		INSERT INTO BANKBOOK
   		VALUES (#{bookNum}, #{bookName}, #{bookDetail}, #{bookRate}, #{bookSale})
   	</insert>
+  	
+  	<!-- UPDATE -->
+  	
   	
   	<!-- DELETE -->
   	<delete id="setBankbookDelete" parameterType="Long">
