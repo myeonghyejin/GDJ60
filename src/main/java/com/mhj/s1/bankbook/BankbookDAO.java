@@ -22,22 +22,22 @@ public class BankbookDAO {
 	
 	//상세 정보 조회
 	public BankbookDTO getBankbookDetail(BankbookDTO bankbookDTO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getBankbookDetail");
+		return sqlSession.selectOne(NAMESPACE+"getBankbookDetail", bankbookDTO);
 	}
 	
 	//상품 등록
 	public int setBankbookAdd(BankbookDTO bankbookDTO) throws Exception {
-		return sqlSession.insert(NAMESPACE+"setBankbookAdd");
+		return sqlSession.insert(NAMESPACE+"setBankbookAdd", bankbookDTO);
 	}
 	
 	//상품 수정
-	public int setBankbookUpdate() throws Exception {
-		return sqlSession.update(NAMESPACE+"setBankbookUpdate");
+	public int setBankbookUpdate(BankbookDTO bankbookDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"setBankbookUpdate", bankbookDTO);
 	}
 	
 	//상품 삭제
-	public int setBankbookDelete() throws Exception {
-		return sqlSession.delete(NAMESPACE+"setBankbookDelete");
+	public int setBankbookDelete(BankbookDTO bankbookDTO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"setBankbookDelete", bankbookDTO);
 	}
 
 }

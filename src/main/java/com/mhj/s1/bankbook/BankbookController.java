@@ -35,7 +35,7 @@ public class BankbookController {
 		return modelAndView;
 	}
 	
-	//add (입력 폼으로 이동)
+	//setBankbookAdd (입력 폼으로 이동)
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public ModelAndView setBankbookAdd() throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
@@ -43,7 +43,7 @@ public class BankbookController {
 		return modelAndView;
 	}
 	
-	//add (DB에 INSERT)
+	//setBankbookAdd (DB에 INSERT)
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public ModelAndView setBankbookAdd(BankbookDTO bankbookDTO) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
@@ -52,7 +52,25 @@ public class BankbookController {
 		return modelAndView;
 	}
 	
-	//delete
+	//setBankbookUpdate (수정 폼으로 이동)
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public ModelAndView setBankbookUpdate(BankbookDTO bankbookDTO) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		bankbookDTO = bankbookService.getBankbookDetail(bankbookDTO);
+		modelAndView.setViewName("bankbook/bankbookUpdate");
+		modelAndView.addObject("DTO", bankbookDTO);
+		return modelAndView;
+	}
+	
+	//setBankbookUpdate
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public ModelAndView setBankbookUpdate(BankbookDTO bankbookDTO, ModelAndView modelAndView) throws Exception {
+		int result = bankbookService.setBankbookUpdate(bankbookDTO);
+		modelAndView.setViewName("redirect:./detail");
+		return modelAndView;
+	}
+	
+	//setBankbookDelete
 	@RequestMapping(value = "delete", method = RequestMethod.GET)
 	public ModelAndView setBankbookDelete(BankbookDTO bankbookDTO) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();

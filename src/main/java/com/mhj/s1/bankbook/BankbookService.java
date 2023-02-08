@@ -28,12 +28,12 @@ public class BankbookService {
 	
 	//setBankbookUpdate
 	public int setBankbookUpdate(BankbookDTO bankbookDTO) throws Exception {
-		return bankbookDAO.setBankbookUpdate();
+		return bankbookDAO.setBankbookUpdate(bankbookDTO);
 	}
 	
 	//setBankbookDelete
 	public int setBankbookDelete(BankbookDTO bankbookDTO) throws Exception {
-		return bankbookDAO.setBankbookDelete();
+		return bankbookDAO.setBankbookDelete(bankbookDTO);
 	}
 	
 }

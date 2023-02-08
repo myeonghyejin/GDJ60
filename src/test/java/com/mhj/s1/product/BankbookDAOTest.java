@@ -1,5 +1,6 @@
 package com.mhj.s1.product;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 import java.util.List;
@@ -20,6 +21,14 @@ public class BankbookDAOTest extends MyTestCase {
 	public void getBankbookListTest() throws Exception {
 		List<BankbookDTO> ar = bankbookDAO.getBankbookList();
 		assertNotEquals(0, ar.size());
+	}
+	
+	@Test
+	public void setBankbookUpdateTest() throws Exception {
+		BankbookDTO bankbookDTO = new BankbookDTO();
+		bankbookDTO.setBookNum(8L);
+		int result = bankbookDAO.setBankbookUpdate(bankbookDTO);
+		assertEquals(1, result);
 	}
 
 }

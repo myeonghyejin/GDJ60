@@ -7,21 +7,25 @@
   <mapper namespace="com.mhj.s1.bankbook.BankbookDAO">
   	<!-- SELECT -->
   	<select id="getBankbookList" resultType="BankbookDTO">
-  		SELECT BOOKNAME FROM BANKBOOK
+  		SELECT * FROM BANKBOOK
   	</select>
+  	
   	<select id="getBankbookDetail" parameterType="BankbookDTO" resultType="BankbookDTO">
-  		SELECT BOOKDETAIL FROM BANKBOOK
-  		WHERE BOOKNUM=#{bookNum}
+  		SELECT * FROM BANKBOOK WHERE BOOKNUM=#{bookNum}
   	</select>
   	
   	<!-- INSERT -->
   	<insert id="setBankbookAdd" parameterType="BankbookDTO">
   		INSERT INTO BANKBOOK
-  		VALUES (#{bookNum}, #{bookName}, #{bookDetail}, #{bookRate}, #{bookSale})
+  		VALUES (BANKNUM_SEQ.NEXTVAL, #{bookName}, #{bookDetail}, #{bookRate}, #{bookSale})
   	</insert>
   	
   	<!-- UPDATE -->
-  	
+  	<update id="setBankbookUpdate" parameterType="BankbookDTO">
+  		UPDATE BANKBOOK
+  		SET BOOKNAME, BOOKDETAIL, BOOKRATE, BOOKSALE
+  		WHERE BOOKNUM=#{bookNum}
+  	</update>
   	
   	<!-- DELETE -->
   	<delete id="setBankbookDelete" parameterType="Long">

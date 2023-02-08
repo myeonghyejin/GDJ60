@@ -10,7 +10,7 @@
 <body>
 	<h1>Bankbook List Page</h1>
 	
-	<table>
+	<table border="1">
 		<thead>
 			<tr>
 				<th>상품명</th>
@@ -21,13 +21,22 @@
 		<tbody>
 			<c:forEach items="${list}" var="DTO">
 				<tr>
-					<td>${DTO.bookNum}</td>
+					<td><a href="./detail?bookNum=${DTO.bookNum}">${pageScope.DTO.bookName}</a></td>
 					<td>${DTO.bookRate}</td>
-					<td>${DTO.bookSale}</td>
+					<td>
+<%-- 					<c:if test="${DTO.bookSale eq 1}">판매 중</c:if>
+						<c:if test="${DTO.bookSale ne 1}">판매 중지</c:if> --%>
+						<c:choose>
+							<c:when test="${DTO.bookSale eq 1}">판매 중</c:when>
+							<c:otherwise>판매 중지</c:otherwise>
+						</c:choose>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	
+	<a href=./add>상품 등록</a>
 	
 </body>
 </html>

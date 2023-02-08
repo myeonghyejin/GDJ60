@@ -12,14 +12,14 @@
 </head>
 <body>
 	
-	<h1>Product List</h1>
+<%-- 	<h1>Product List</h1>
 	<% 
 		List<ProductDTO> ar = (List<ProductDTO>)request.getAttribute("list");
 		for(ProductDTO productDTO:ar){
 	%>
 		<h3><%= productDTO.getProductName() %></h3>
 		<h3><%= productDTO.getProductJumsu() %></h3>
-	<%} %>
+	<%} %> --%>
 	
 	<hr>
 	
@@ -36,7 +36,7 @@
 			<c:forEach items="${list}" var="DTO"> <!-- DTO는 page영역에 담김 -->
 				<tr>
 					<td><a href="./detail?productNum=${DTO.productNum}">${pageScope.DTO.productName}</a></td>
-					<td>${DTO.productRating}</td>
+					<td>${DTO.productJumsu}</td>
 				</tr>
 			</c:forEach>
 	
