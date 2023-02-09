@@ -6,11 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/resources/css/table.css">
 </head>
 <body>
-	<h1>Bankbook List Page</h1>
+	<h1 class=title>Bankbook List Page</h1>
 	
-	<table border="1">
+	<div class="image">
+		<img alt="" src="../resources/images/3.jpg">
+	</div>
+	
+	<table class="t1" border="1">
 		<thead>
 			<tr>
 				<th>상품명</th>
