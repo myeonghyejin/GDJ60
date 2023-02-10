@@ -23,7 +23,7 @@
 	
 	<hr>
 	
-	<table class=t1 border="1">
+	<table class=t1 border="">
 		<thead>
 			<tr>
 				<th>상품명</th><th>평점</th>

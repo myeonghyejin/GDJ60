@@ -5,25 +5,34 @@
 <head>
 	<title>Home</title>
 	<link rel="stylesheet" href="./resources/css/main.css">
+	<link rel="stylesheet" href="./resources/css/reset.css">
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-<!-- 절대 경로 -->
-<a href="./product/list?num=1&num=2&num=3" class="menu">ProductList</a>
-<!-- 상대 경로 -->
-<a href="/product/list" class="menu">ProductList</a>
-<!-- 절대 경로 -->
-<a href="/bankbook/list" class="menu">BankbookList</a>
-<!-- 상대 경로 -->
-<a href="./bankbook/list" class="menu">BankbookList</a><br>
-
-<img alt="hyein hani minji" src="/resources/images/2.jpg">
-<img alt="hyein hani" src="./resources/images/1.png">
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/js1CtxSY38I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<P>  The time on the server is ${serverTime}. </P>
+	<header>
+		<div class="header_wrap">
+			<div class="header_logo">
+				<img src="/resources/images/logo.png" alt="">
+			</div>
+			<nav class="header_nav">
+				<ul>
+					<li><a href="#">NOTICE</a></li>
+					<li><a href="#">PRODUCT</a></li>
+					<li><a href="#">BANKBOOK</a></li>
+					<li><a href="#">ETC</a></li>
+				</ul>
+			</nav>
+			<div class="header_sub">
+				<ul>
+					<li><a href="#">LOGIN</a></li>
+					<li><a href="#">JOIN</a></li>
+					<li>|</li>
+					<li><a href="#">KO</a></li>
+					<li><a href="#">EN</a></li>
+					<li><a href="#">JP</a></li>
+					<li><a href="#">CN</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
 </body>
 </html>

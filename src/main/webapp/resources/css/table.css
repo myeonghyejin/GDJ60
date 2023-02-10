@@ -1,6 +1,19 @@
 .t1 {
     width: 70%;
     margin: 0px auto;
+	border: 1px solid black;
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+
+.t1 > thead > tr {
+	background-color: black;
+	color: white;
+}
+
+.t1 th, .t1 td {
+	border: 1px solid black;
+	height: 40px;
 }
 
 .title {
@@ -11,4 +24,47 @@
 .image {
 	width: 50%;
 	margin: 0 auto;
+}
+
+.tdl_td {
+	text-align: center;
+}
+
+.t1 > tbody td > a {
+	text-decoration: none;
+	color: black;
+}
+
+/**************************************************/
+
+.t2 {
+	width: 70%;
+	height: 40px;
+	margin: 0 auto;
+	color: black;
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+
+.t2 > thead > tr > th {
+	color: white;
+	background-color: black;
+	border: white 1px solid;
+}
+
+.t2 td, .t2 th {
+	border-right: white 2px solid;
+}
+
+.t2 > tbody > tr > a {
+	text-decoration: none;
+	color: white;
+}
+
+.t2 > tbody > tr {
+	border: white 1px solid;
+}
+
+.t2 > tbody > tr > td {
+	border-bottom: black 1px solid;
 }
