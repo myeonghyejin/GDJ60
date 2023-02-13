@@ -7,7 +7,7 @@
   <mapper namespace="com.mhj.s1.bankbook.BankbookDAO">
   	<!-- SELECT -->
   	<select id="getBankbookList" resultType="BankbookDTO">
-  		SELECT * FROM BANKBOOK
+  		SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC
   	</select>
   	
   	<select id="getBankbookDetail" parameterType="BankbookDTO" resultType="BankbookDTO">
