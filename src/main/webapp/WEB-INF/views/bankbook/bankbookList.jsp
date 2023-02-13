@@ -6,9 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/table.css">
+	<c:import url="../template/common_css.jsp"></c:import>
+	<link rel="stylesheet" href="/resources/css/table.css">
 </head>
 <body>
+	<c:import url="../template/header.jsp"></c:import>
 	<h1 class=title>Bankbook List Page</h1>
 	
 	<div class="image">

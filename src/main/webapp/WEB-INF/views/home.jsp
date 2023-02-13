@@ -4,35 +4,10 @@
 <html>
 <head>
 	<title>Home</title>
-	<link rel="stylesheet" href="./resources/css/main.css">
-	<link rel="stylesheet" href="./resources/css/reset.css">
+	<c:import url="./template/common_css.jsp"></c:import>
 </head>
 <body>
-	<header>
-		<div class="header_wrap">
-			<div class="header_logo">
-				<img src="/resources/images/logo.png" alt="">
-			</div>
-			<nav class="header_nav">
-				<ul>
-					<li><a href="#">NOTICE</a></li>
-					<li><a href="#">PRODUCT</a></li>
-					<li><a href="#">BANKBOOK</a></li>
-					<li><a href="#">ETC</a></li>
-				</ul>
-			</nav>
-			<div class="header_sub">
-				<ul>
-					<li><a href="#">LOGIN</a></li>
-					<li><a href="#">JOIN</a></li>
-					<li>|</li>
-					<li><a href="#">KO</a></li>
-					<li><a href="#">EN</a></li>
-					<li><a href="#">JP</a></li>
-					<li><a href="#">CN</a></li>
-				</ul>
-			</div>
-		</div>
-	</header>
+	<!-- 서버 내부 URL, 상대 경로 -->
+	<c:import url="./template/header.jsp"></c:import>
 </body>
 </html>
