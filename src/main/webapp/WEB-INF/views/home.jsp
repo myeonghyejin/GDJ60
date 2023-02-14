@@ -6,11 +6,11 @@
 <head>
 	<title>Home</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<c:import url="./template/common_css.jsp"></c:import>
+<c:import url="./template/common_css.jsp"></c:import>
 </head>
 <body>
 	<!-- 서버 내부 URL, 상대 경로 -->
-	<c:import url="./template/header.jsp"></c:import>
+<c:import url="./template/header.jsp"></c:import>
 	
 	<div class="container-fluid my-5">
 		<div class="row col-md-6 offset-md-3">
@@ -37,6 +37,11 @@
 			</div>
 		</div>
 	</div>
-	<c:import url="./template/common_js.jsp"></c:import>
+	
+	<div>
+		<h1>${member.name}</h1>
+	</div>
+	
+<c:import url="./template/common_js.jsp"></c:import>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
 	<div class="container-fluid">
 		<a href="../" class="navbar-brand"><img src="/resources/images/logo.png" alt=""></a>
@@ -13,13 +14,19 @@
             <li class="nav-item"><a class="nav-link" style="font-family: 'Impact'" href="/bankbook/list">BANKBOOK</a></li>
             <li class="nav-item"><a class="nav-link" style="font-family: 'Impact'" href="#">ETC</a></li>
         </ul>
-        <ul class="navbar-nav">
-        	<li class="nav-item"><a class="nav-link" style="font-size: 11px" href="#">LOGIN</a></li>
-            <li class="nav-item"><a class="nav-link" style="font-size: 11px" href="/member/memberJoin">JOIN</a></li>
-			<li class="nav-item"><a class="nav-link" style="font-size: 11px" href="#">KO</a></li>
-			<li class="nav-item"><a class="nav-link" style="font-size: 11px" href="#">EN</a></li>
-			<li class="nav-item"><a class="nav-link" style="font-size: 11px" href="#">JP</a></li>
-			<li class="nav-item"><a class="nav-link" style="font-size: 11px" href="#">CN</a></li>
-        </ul>
+	    <ul class="navbar-nav">
+        	<c:if test="${empty member}">
+	        	<li class="nav-item"><a class="nav-link" style="font-size: 11px" href="/member/login">LOGIN</a></li>
+	            <li class="nav-item"><a class="nav-link" style="font-size: 11px" href="/member/add">JOIN</a></li>
+        	</c:if>
+        	<c:if test="${not empty member}">
+	        	<li class="nav-item"><a class="nav-link" style="font-size: 11px" href="/member/myPage">MYPAGE</a></li>
+	            <li class="nav-item"><a class="nav-link" style="font-size: 11px" href="/member/logout">LOGOUT</a></li>
+			</c:if>
+				<li class="nav-item"><a class="nav-link" style="font-size: 11px" href="#">KO</a></li>
+				<li class="nav-item"><a class="nav-link" style="font-size: 11px" href="#">EN</a></li>
+				<li class="nav-item"><a class="nav-link" style="font-size: 11px" href="#">JP</a></li>
+				<li class="nav-item"><a class="nav-link" style="font-size: 11px" href="#">CN</a></li>
+	    </ul>
 	</div>
 </nav>
