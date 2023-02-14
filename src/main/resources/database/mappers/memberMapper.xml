@@ -11,8 +11,13 @@
   		ORDER BY ID DESC
   	</select>
   	
-  	<insert id="memberJoin" parameterType="memberDTO">
+  	<insert id="memberJoin" parameterType="MemberDTO">
   		INSERT INTO BANKMEMBERS
   		VALUES (#{id}, #{pw}, #{name}, #{phone}, #{email})
+  	</insert>
+  	
+  	<insert id="" parameterType="MemberDTO">
+  		INSERT INTO MEMBER_ROLE (ID, ROLENUM)
+  		VALUES (#{id}, (SELECT ROLENUM FROM ROLE WHERE ROLENAME='MEMBER'))
   	</insert>
   </mapper>

@@ -1,5 +1,7 @@
 package com.mhj.s1.member;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -10,6 +12,7 @@ public class MemberDTO {
 	private String name;
 	private String phone;
 	private String email;
+	private List<RoleDTO> roleDTOs;
 	
 	//getter, setter
 	public String getId() {
@@ -41,6 +44,12 @@ public class MemberDTO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public List<RoleDTO> getRoleDTOs() {
+		return roleDTOs;
+	}
+	public void setRoleDTOs(List<RoleDTO> roleDTOs) {
+		this.roleDTOs = roleDTOs;
 	}
 
 }
