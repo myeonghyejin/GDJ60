@@ -57,8 +57,10 @@ public class MemberController {
 	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
 		memberDTO = memberService.getMemberLogin(memberDTO);
-		HttpSession session = request.getSession();
-		session.setAttribute("member", memberDTO);
+		if(memberDTO != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("member", memberDTO);	
+		}
 		modelAndView.setViewName("redirect:../");
 		return modelAndView;
 	}
@@ -74,15 +76,22 @@ public class MemberController {
 	
 	//getMemberPage
 	@RequestMapping(value="myPage", method=RequestMethod.GET)
-	public ModelAndView getMemberPage (HttpSession session) throws Exception {
+	public ModelAndView getMemberPage(HttpSession session) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO = memberService.getMemberPage(memberDTO);
+		modelAndView.addObject("DTO", memberDTO);
 		modelAndView.setViewName("member/memberPage");
 		return modelAndView;
 	}
 	
 	//setMemberUpdate (입력 폼으로 이동)
 	@RequestMapping(value="update", method=RequestMethod.GET)
-	public ModelAndView setMemberUpdate (ModelAndView modelAndView) throws Exception {
+	public ModelAndView setMemberUpdate(HttpSession session) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO = memberService.getMemberPage(memberDTO);
+		modelAndView.addObject("DTO", memberDTO);
 		modelAndView.setViewName("member/memberUpdate");
 		return modelAndView;
 	}
@@ -93,9 +102,9 @@ public class MemberController {
 		MemberDTO sessionMemberDTO = (MemberDTO)session.getAttribute("member");
 		memberDTO.setId(sessionMemberDTO.getId());
 		int result = memberService.setMemberUpdate(memberDTO);
-		if(result>0) {	
-			session.setAttribute("member", memberDTO);
-		}
+//		if(result>0) {	
+//			session.setAttribute("member", memberDTO);
+//		}
 		modelAndView.setViewName("redirect:./myPage");
 		return modelAndView;
 	}

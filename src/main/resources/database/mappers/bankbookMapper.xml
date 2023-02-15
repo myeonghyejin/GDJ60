@@ -6,8 +6,20 @@
   
   <mapper namespace="com.mhj.s1.bankbook.BankbookDAO">
   	<!-- SELECT -->
-  	<select id="getBankbookList" resultType="BankbookDTO">
-  		SELECT * FROM BANKBOOK ORDER BY BOOKNUM DESC
+  	<select id="getBankbookCount" resultType="Long">
+  		SELECT COUNT(BOOKNUM) FROM BANKBOOK
+  	</select>
+  	
+  	<select id="getBankbookList" parameterType="Pager" resultType="BankbookDTO">
+  		SELECT * FROM 
+			(
+			 	SELECT ROWNUM R, B.* FROM
+					(
+						SELECT * FROM BANKBOOK
+						ORDER BY BOOKNUM DESC
+					)
+				B)
+			WHERE R BETWEEN #{startRow} AND #{lastRow}
   	</select>
   	
   	<select id="getBankbookDetail" parameterType="BankbookDTO" resultType="BankbookDTO">
@@ -17,7 +29,7 @@
   	<!-- INSERT -->
   	<insert id="setBankbookAdd" parameterType="BankbookDTO">
   		INSERT INTO BANKBOOK
-  		VALUES (BANKNUM_SEQ.NEXTVAL, #{bookName}, #{bookDetail}, #{bookRate}, #{bookSale})
+  		VALUES (BKBOOK_SEQ.NEXTVAL, #{bookName}, #{bookDetail}, #{bookRate}, #{bookSale})
   	</insert>
   	
   	<!-- UPDATE -->

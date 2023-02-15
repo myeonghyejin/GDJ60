@@ -15,9 +15,9 @@
 			<p class="fs-2" style="font-family: 'Impact'">MY PAGE</p>
 		</div>
 		<div class="row col-md-4 mx-auto my-5">
-			<h3>${member.name}</h3>
-			<h3>${member.phone}</h3>
-			<h3>${member.email}</h3>
+			<h3>${DTO.name}</h3>
+			<h3>${DTO.phone}</h3>
+			<h3>${DTO.email}</h3>
 			<div class="row justify-content-center mx-auto">
 				<a href="./update" class="btn btn-outline-warning col-2">정보 수정</a>
 			</div>

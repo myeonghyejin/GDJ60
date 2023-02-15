@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mhj.s1.util.Pager;
+
 @Repository
 public class BankbookDAO {
 	
@@ -16,8 +18,8 @@ public class BankbookDAO {
 	private final String NAMESPACE = "com.mhj.s1.bankbook.BankbookDAO.";
 	
 	//상품 조회
-	public List<BankbookDTO> getBankbookList() throws Exception {
-		return sqlSession.selectList(NAMESPACE+"getBankbookList");
+	public List<BankbookDTO> getBankbookList(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE+"getBankbookList", pager);
 	}
 	
 	//상세 정보 조회
@@ -38,6 +40,11 @@ public class BankbookDAO {
 	//상품 삭제
 	public int setBankbookDelete(BankbookDTO bankbookDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE+"setBankbookDelete", bankbookDTO);
+	}
+	
+	//
+	public Long getBankbookCount() throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getBankbookCount");
 	}
 
 }

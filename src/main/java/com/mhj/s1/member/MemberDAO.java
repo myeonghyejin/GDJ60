@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mhj.s1.util.DBConnection;
+import com.mhj.s1.util.Pager;
 
 @Repository
 public class MemberDAO {

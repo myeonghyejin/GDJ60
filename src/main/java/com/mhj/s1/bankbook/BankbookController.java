@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mhj.s1.util.Pager;
+
 @Controller
 @RequestMapping(value="/bankbook/*")
 public class BankbookController {
@@ -17,11 +19,14 @@ public class BankbookController {
 
 	//getBankbookList
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public ModelAndView getBankbookList() throws Exception {
+	public ModelAndView getBankbookList(Pager pager) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
-		List<BankbookDTO> ar = bankbookService.getBankbookList();
+		
+		List<BankbookDTO> ar = bankbookService.getBankbookList(pager);	//매개 변수 -> 객체 자체를 보내는 것이 아닌 객체의 주소를 보내는 것
+		
 		modelAndView.setViewName("bankbook/bankbookList");
-		modelAndView.addObject("list", ar);
+		modelAndView.addObject("list", ar);	//객체 주소
+		modelAndView.addObject("pager", pager);	//객체 주소
 		return modelAndView;
 	}
 	

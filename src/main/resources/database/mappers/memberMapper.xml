@@ -16,7 +16,7 @@
   	<select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberDTO">
   		SELECT *
   		FROM BANKMEMBERS
-  		WHERE ID=#{id} AND PW=#{pw}
+  		WHERE ID=#{id}
   	</select>
   	
   	<select id="getMemberPage" parameterType="MemberDTO" resultType="MemberDTO">
