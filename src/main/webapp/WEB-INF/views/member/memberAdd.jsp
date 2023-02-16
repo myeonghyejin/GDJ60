@@ -42,7 +42,7 @@
 			</div>
 			
 			<div class="row justify-content-center my-3">
-				<button type="submit" class="btn btn-outline-warning col-2">등록</button>
+				<button type="submit" class="btn btn-primary col-2">등록</button>
 			</div>
 		</div>
 	</form>

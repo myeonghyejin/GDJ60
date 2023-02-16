@@ -23,7 +23,7 @@ public class ProductController {
 	private ProductService productService;
 	
 	//getProductList
-	@RequestMapping(value="list")
+	@RequestMapping(value="list", method=RequestMethod.GET)
 	public ModelAndView getProductList(ModelAndView modelAndView, Pager pager) throws Exception {
 		List<ProductDTO> ar = productService.getProductList(pager);
 		
@@ -34,7 +34,7 @@ public class ProductController {
 	}
 	
 	//getProductDetail
-	@RequestMapping(value="detail")
+	@RequestMapping(value="detail", method=RequestMethod.GET)
 	public String getProductDetail(ProductDTO productDTO, Model model) throws Exception {
 		//파라미터의 이름과 setter의 이름과 같아야 함
 		

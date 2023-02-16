@@ -16,18 +16,12 @@
 
 <div class="container-fluid my-5">
 
+	<!-- Title -->
 	<div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
 		<p class="fs-2" style="font-family: 'Impact'">Product List</p>
 	</div>
 	
-<%-- 	<% 
-		List<ProductDTO> ar = (List<ProductDTO>)request.getAttribute("list");
-		for(ProductDTO productDTO:ar){
-	%>
-		<h3><%= productDTO.getProductName() %></h3>
-		<h3><%= productDTO.getProductJumsu() %></h3>
-	<%} %> --%>
-	
+	<!-- List -->
 	<div class="row col-md-4 mx-auto my-5">
 		<table class="table table-hover">
 			<thead>
@@ -105,7 +99,7 @@
 		
 		<!-- 상품 등록 버튼 -->
 		<div class="row justify-content-center">
-			<a class="btn btn-outline-warning col-2" href="./productAdd">상품 등록</a>
+			<a class="btn btn-primary col-2" href="./productAdd">상품 등록</a>
 		</div>
 	</div>
 </div>

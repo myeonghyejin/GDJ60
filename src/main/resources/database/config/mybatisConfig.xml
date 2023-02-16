@@ -12,6 +12,7 @@
   		<typeAlias type="com.mhj.s1.member.RoleDTO" alias="RoleDTO"/>
   		
   		<typeAlias type="com.mhj.s1.bankbook.BankbookDTO" alias="BankbookDTO"/>
+  		<typeAlias type="com.mhj.s1.bankbook.BankbookImgDTO" alias="BankbookImgDTO"/>
   		
   		<typeAlias type="com.mhj.s1.util.Pager" alias="Pager"/>
   		

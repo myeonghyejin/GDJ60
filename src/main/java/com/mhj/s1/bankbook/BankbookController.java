@@ -2,10 +2,14 @@ package com.mhj.s1.bankbook;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mhj.s1.util.Pager;
@@ -50,9 +54,13 @@ public class BankbookController {
 	
 	//setBankbookAdd (DB에 INSERT)
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public ModelAndView setBankbookAdd(BankbookDTO bankbookDTO) throws Exception {
+	public ModelAndView setBankbookAdd(BankbookDTO bankbookDTO, MultipartFile pic, HttpSession Session) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
-		int result = bankbookService.setBankbookAdd(bankbookDTO);
+		System.out.println("Name : " + pic.getName());
+		System.out.println("Original File Name : " + pic.getOriginalFilename());
+		System.out.println("Size : " + pic.getSize());
+		System.out.println(Session.getServletContext());
+		int result = bankbookService.setBankbookAdd(bankbookDTO, pic);
 		modelAndView.setViewName("redirect:./list");
 		return modelAndView;
 	}

@@ -5,11 +5,9 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.mhj.s1.product.ProductDAO">
-  
-  	<!-- SELECT -->
-  	<select id="getProductCount" parameterType="Pager" resultType="Long">
-  		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
-  		<if test="kind == 'title'">
+  	<!-- SQL -->
+  	<sql id="searchCondition">
+		<if test="kind == 'title'">
   			WHERE PRODUCTNAME
   			LIKE '%' || #{search} || '%'
   		</if>
@@ -17,6 +15,24 @@
   			WHERE PRODUCTDETAIL
   			LIKE '%' || #{search} || '%'
   		</if>
+  	</sql>
+  	<sql id="searchCondition2">
+		WHERE 			
+		<choose>
+			<when test="kind == 'title'">
+				PRODUCTNAME
+			</when>
+			<otherwise>
+				PRODUCTDETAIL
+			</otherwise>
+		</choose>
+		LIKE '%' || #{search} || '%'
+  	</sql>
+  
+  	<!-- SELECT -->
+  	<select id="getProductCount" parameterType="Pager" resultType="Long">
+  		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
+  		<include refid="searchCondition"></include>
   	</select>
   
   	<select id="getProductList" parameterType="Pager" resultType="ProductDTO">
@@ -25,22 +41,11 @@
   				SELECT ROWNUM R, B.* FROM
   					(
   						SELECT * FROM PRODUCT
-  						WHERE
-  						
-					  		<choose>
-					  			<when test="kind = 'title'">
-					  				PRODUCTNAME
-					  			</when>
-					  			<otherwise>
-					  				PRODUCTDETAIL
-					  			</otherwise>
-					  		</choose>
-					  	
-					  	LIKE '%' || #{search} || '%'
+  						<include refid="searchCondition"></include>
 					  	ORDER BY PRODUCTNUM DESC
 					)
 			B)
-		WHERE R BETWEEN #{startNum} AND #{lastNum}
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
   	</select>
   	
   	<select id="getProductNum" resultType="Long">

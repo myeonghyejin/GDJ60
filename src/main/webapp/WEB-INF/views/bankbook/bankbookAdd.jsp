@@ -6,32 +6,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<c:import url="../template/common_css.jsp"></c:import>
+<c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
+<c:import url="../template/header.jsp"></c:import>
 <div class="container-fluid my-5">
    <div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
      <p class="fs-2" style="font-family: 'Impact'">Bankbook Add Page</p>
    </div>
-   <form action="./add" method = "post">
+   <form action="./add" method = "post" enctype="multipart/form-data">
 		<div class="row col-md-4 mx-auto my-5">
-			<div class="fw-bold fs-5">
+			<div class="fw-bold fs-5 col-12">
 				<p>이름</p>
 				<input type="text" name="bookName" class="form-control" id="exampleFormControlInput1" placeholder="상품명 입력"><br>
 			</div>
-			<div class="fw-bold fs-5">
+			<div class="fw-bold fs-5 col-12">
 				<p>상세 정보</lp>
 				<textarea name="bookDetail" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="상세 정보 입력"></textarea><br>
 			</div>
-			<div class="fw-bold fs-5">
+			<div class="fw-bold fs-5 col-12">
 				<p>이자율</p>
 				<input type="text" name="bookRate" class="form-control" id="exampleFormControlInput1" placeholder="이자율 입력"><br>
 			</div>			
-			<div class="form-check form-switch">
+			<div class="form-check form-switch justify-content-center">
 				<input class="form-check-input" name="bookSale" type="checkbox" role="switch" id="flexSwitchCheckDefault">
 				<label class="form-check-label" for="flexSwitchCheckDefault">판매 여부</label>
 			</div>			
-			<div class="fw-bold fs-5">
+			<div class="fw-bold fs-5 col-12 mt-3">
 				<label for="files" class="form-label">Image</label>
 				<input type="file" class="form-control" id="files" name="pic">
 			</div>			
