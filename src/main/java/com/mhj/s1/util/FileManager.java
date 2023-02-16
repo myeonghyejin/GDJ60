@@ -17,8 +17,9 @@ public class FileManager {
 		//		/resources/upload/bankbook/...
 		//2. 저장 관리는 운영 체제가 담당
 		
-		//폴더가 존재하지 않으면 폴더 생성
+		//저장할 폴더의 정보를 가지고 있는 자바 객체를 선언
 		File file = new File(path);
+		//폴더가 존재하지 않으면 폴더 생성
 		if(!file.exists()) {
 			file.mkdirs();
 		}
