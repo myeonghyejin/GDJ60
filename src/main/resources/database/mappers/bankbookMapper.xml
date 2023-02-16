@@ -5,9 +5,35 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.mhj.s1.bankbook.BankbookDAO">
+  
+  	<!-- SQL -->
+  	<sql id="searchCondition">
+		<if test="kind == 'title'">
+  			WHERE BOOKNAME
+  			LIKE '%' || #{search} || '%'
+  		</if>
+  		<if test="kind == 'contents'">
+  			WHERE BOOKDETAIL
+  			LIKE '%' || #{search} || '%'
+  		</if>
+  	</sql>
+  	<sql id="searchCondition2">
+		WHERE 			
+		<choose>
+			<when test="kind == 'title'">
+				BOOKNAME
+			</when>
+			<otherwise>
+				BOOKDETAIL
+			</otherwise>
+		</choose>
+		LIKE '%' || #{search} || '%'
+  	</sql>
+  
   	<!-- SELECT -->
-  	<select id="getBankbookCount" resultType="Long">
+  	<select id="getBankbookCount" parameterType="Pager" resultType="Long">
   		SELECT COUNT(BOOKNUM) FROM BANKBOOK
+  		<include refid="searchCondition"></include>
   	</select>
   	
   	<select id="getBankbookList" parameterType="Pager" resultType="BankbookDTO">
@@ -16,9 +42,10 @@
 			 	SELECT ROWNUM R, B.* FROM
 					(
 						SELECT * FROM BANKBOOK
+						<include refid="searchCondition"></include>
 						ORDER BY BOOKNUM DESC
 					)
-				B)
+			B)
 			WHERE R BETWEEN #{startRow} AND #{lastRow}
   	</select>
   	

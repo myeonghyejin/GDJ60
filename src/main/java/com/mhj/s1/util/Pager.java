@@ -2,8 +2,44 @@ package com.mhj.s1.util;
 
 public class Pager {
 	
+	//검색 종류(사용할 Column명)
+	private String kind;
+	
+	//검색어
+	private String search;
+	
+	//Getter, Setter
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	public String getSearch() {
+		if(search == null) {
+			search = "";
+		}
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	public void setTotalPage(Long totalPage) {
+		this.totalPage = totalPage;
+	}
+	
+	//--------------------------------
+	
+
 	//한 페이지에 출력할 row의 개수
 	private Long perPage;
+	
+	//한 Block당 출력할 번호의 개수
+	private Long perBlock;
+	
+	//전체 Page 개수
+	private Long totalPage;
+	
 	//Client가 보고 싶은 페이지 번호 (Parameter)
 	private Long page;
 	
@@ -47,18 +83,17 @@ public class Pager {
 		
 		//1. 전체 row의 개수 구하기
 		//2. 총 페이지의 개수
-		Long totalPage = totalCount / this.getPerPage();
+		totalPage = totalCount / this.getPerPage();
 		if (totalCount%this.getPerPage() != 0) {
 			//totalPage=totalPage+1;
 			//totalPage+= 1;
 			totalPage++;
 		}
 		//3. 한 블럭에 출력할 번호의 개수
-		Long perBlock = 5L;
 		
 		//4. 총 블럭의 개수 구하기
-		Long totalBlock = totalPage / perBlock;
-		if (totalPage%perBlock != 0) {
+		Long totalBlock = totalPage / this.getPerBlock();
+		if (totalPage%this.getPerBlock() != 0) {
 			totalBlock++;
 		}
 		
@@ -71,8 +106,8 @@ public class Pager {
 		// page 1-5 curBlock 1
 		// page 6-10 curBlock 2
 		// page 11-15 curBlock 3
-		Long curBlock = this.getPage() / perBlock;
-		if (this.getPage()%perBlock != 0) {
+		Long curBlock = this.getPage() / this.getPerBlock();
+		if (this.getPage()%this.getPerBlock() != 0) {
 			curBlock++;
 		}
 		
@@ -83,8 +118,8 @@ public class Pager {
 		 * 		3			11			15
 		 */
 		
-		this.startNum = perBlock*(curBlock-1)+1;
-		this.lastNum = curBlock*perBlock;
+		this.startNum = this.getPerBlock()*(curBlock-1)+1;
+		this.lastNum = curBlock*this.getPerBlock();
 		
 		this.after = true;
 		if(curBlock == totalBlock) {
@@ -153,6 +188,18 @@ public class Pager {
 	}
 	public void setBefore(boolean before) {
 		this.before = before;
+	}
+	public Long getPerBlock() {
+		if(this.perBlock == null || this.perBlock < 1) {
+			this.perBlock = 5L;
+		}
+		return perBlock;
+	}
+	public void setPerBlock(Long perBlock) {
+		this.perBlock = perBlock;
+	}
+	public Long getTotalPage() {
+		return totalPage;
 	}
 	
 }

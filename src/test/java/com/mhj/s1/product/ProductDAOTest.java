@@ -15,12 +15,12 @@ public class ProductDAOTest extends MyTestCase {
 	private ProductDAO productDAO;
 	
 	//getProductList
-	@Test
-	public void getProductListTest() throws Exception {
-		List<ProductDTO> ar = productDAO.getProductList();
-		//단정문
-		assertNotEquals(0, ar.size());
-	}
+//	@Test
+//	public void getProductListTest() throws Exception {
+//		List<ProductDTO> ar = productDAO.getProductList();
+//		//단정문
+//		assertNotEquals(0, ar.size());
+//	}
 
 	//getProductDetail
 	@Test

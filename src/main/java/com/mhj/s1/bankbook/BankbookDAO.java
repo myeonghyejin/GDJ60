@@ -42,9 +42,9 @@ public class BankbookDAO {
 		return sqlSession.delete(NAMESPACE+"setBankbookDelete", bankbookDTO);
 	}
 	
-	//
-	public Long getBankbookCount() throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"getBankbookCount");
+	//전체 상품 개수 계산
+	public Long getBankbookCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getBankbookCount", pager);
 	}
 
 }

@@ -15,23 +15,26 @@
    </div>
    <form action="./add" method = "post">
 		<div class="row col-md-4 mx-auto my-5">
-			<fieldset>
-				<legend class="fw-bold fs-5">이름</legend>
+			<div class="fw-bold fs-5">
+				<p>이름</p>
 				<input type="text" name="bookName" class="form-control" id="exampleFormControlInput1" placeholder="상품명 입력"><br>
-			</fieldset>
-			<fieldset>
-				<legend class="fw-bold fs-5">상세 정보</legend>
+			</div>
+			<div class="fw-bold fs-5">
+				<p>상세 정보</lp>
 				<textarea name="bookDetail" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="상세 정보 입력"></textarea><br>
-				</fieldset>
-			<fieldset>
-				<legend class="fw-bold fs-5">이자율</legend>
+			</div>
+			<div class="fw-bold fs-5">
+				<p>이자율</p>
 				<input type="text" name="bookRate" class="form-control" id="exampleFormControlInput1" placeholder="이자율 입력"><br>
-			</fieldset>
-			
+			</div>			
 			<div class="form-check form-switch">
 				<input class="form-check-input" name="bookSale" type="checkbox" role="switch" id="flexSwitchCheckDefault">
 				<label class="form-check-label" for="flexSwitchCheckDefault">판매 여부</label>
-			</div>
+			</div>			
+			<div class="fw-bold fs-5">
+				<label for="files" class="form-label">Image</label>
+				<input type="file" class="form-control" id="files" name="pic">
+			</div>			
 			
 <!-- 			<fieldset class="mb-4">
 				<legend class="fw-bold fs-5">판매 여부</legend>

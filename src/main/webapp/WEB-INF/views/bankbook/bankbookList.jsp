@@ -14,10 +14,12 @@
 
 <div class="container-fluid my-5">
 
+	<!-- Title -->
 	<div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
 		<p class="fs-2" style="font-family: 'Impact'">Bankbook List Page</p>
 	</div>
 	
+	<!-- List -->
 	<div class="row col-md-4 mx-auto my-5">
 		<table class="table table-hover">
 			<thead>
@@ -45,34 +47,35 @@
 			</tbody>
 		</table>
 		
+		<!-- Paging -->
 		<div class="rowmx-auto">
 			<nav aria-label="Page navigation example">
 				<ul class="pagination justify-content-center">
 				
-					<li class="page-item">
-						<a class="page-link" href="./list?page=${pager.startNum-1}" aria-label="Previous">
+					<li class="page-item ${pager.page eq 1?'disabled':''}">
+						<a class="page-link" href="./list?page=1&kind=${pager.kind}&search=${pager.search}" aria-label="Previous">
 							<span aria-hidden="true">&laquo;</span>
 						</a>
 					</li>
 					
 					<li class="page-item ${pager.before?'disabled':''}">
-						<a class="page-link" href="./list?page=${pager.startNum-1}" aria-label="Previous">
+						<a class="page-link" href="./list?page=${pager.startNum-1}&kind=${pager.kind}&search=${pager.search}" aria-label="Previous">
 							<span aria-hidden="true">&lsaquo;</span>
 						</a>
 					</li>
 					
 					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-						<li class="page-item"><a class="page-link" href="./list?page=${i}">${i}</a></li>
+						<li class="page-item"><a class="page-link" href="./list?page=${i}&kind=${pager.kind}&search=${pager.search}">${i}</a></li>
 					</c:forEach>
 					
 					<li class="page-item  ${pager.after eq false ? 'disabled' : ''}">
-						<a class="page-link" href="./list?page=${pager.lastNum+1}"  aria-label="Next">
+						<a class="page-link" href="./list?page=${pager.lastNum+1}&kind=${pager.kind}&search=${pager.search}"  aria-label="Next">
 							<span aria-hidden="true">&rsaquo;</span>
 						</a>
 	 				</li>
 	 				
-	 				<li class="page-item">
-						<a class="page-link" href="./list?page=${pager.lastNum+1}"  aria-label="Next">
+	 				<li class="page-item ${pager.page eq pager.totalPage?'disabled' : ''}">
+						<a class="page-link" href="./list?page=${pager.totalPage}&kind=${pager.kind}&search=${pager.search}"  aria-label="Next">
 							<span aria-hidden="true">&raquo;</span>
 						</a>
 	 				</li>
@@ -81,8 +84,29 @@
 			</nav>
 		</div>
 		
+		<!-- 검색창 -->
+		<form action="./list" method="get" class="row g-3">
+			<div class="row justify-content-center mx-auto">
+				<div class="col-auto">
+					<label for="kind" class="visually-hidden">Email</label>
+					<select class="form-select" name="kind" id="kind" aria-label="Default select example">
+						<option value="title">상품명</option>
+						<option value="contents">상품 내용</option>
+					</select>
+				</div>
+				<div class="col-auto">
+					<label for="search" class="visually-hidden">Search</label>
+					<input type="text" class="form-control" name="search" id="search" placeholder="검색어를 입력하세요.">
+				</div>
+				<div class="col-auto">
+					<button type="submit" class="btn btn-outline-primary mb-3">검색</button>
+				</div>
+			</div>
+		</form>
+		
+		<!-- 상품 등록 버튼 -->
 		<div class="row justify-content-center mx-auto">
-			<a href=./add class="btn btn-outline-primary col-2">상품 등록</a>
+			<a href=./add class="btn btn-primary col-2">상품 등록</a>
 		</div>
 		
 	</div>

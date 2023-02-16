@@ -5,25 +5,59 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.mhj.s1.product.ProductDAO">
+  
+  	<!-- SELECT -->
+  	<select id="getProductCount" parameterType="Pager" resultType="Long">
+  		SELECT COUNT(PRODUCTNUM) FROM PRODUCT
+  		<if test="kind == 'title'">
+  			WHERE PRODUCTNAME
+  			LIKE '%' || #{search} || '%'
+  		</if>
+  		<if test="kind == 'contents'">
+  			WHERE PRODUCTDETAIL
+  			LIKE '%' || #{search} || '%'
+  		</if>
+  	</select>
+  
+  	<select id="getProductList" parameterType="Pager" resultType="ProductDTO">
+  		SELECT * FROM
+  			(
+  				SELECT ROWNUM R, B.* FROM
+  					(
+  						SELECT * FROM PRODUCT
+  						WHERE
+  						
+					  		<choose>
+					  			<when test="kind = 'title'">
+					  				PRODUCTNAME
+					  			</when>
+					  			<otherwise>
+					  				PRODUCTDETAIL
+					  			</otherwise>
+					  		</choose>
+					  	
+					  	LIKE '%' || #{search} || '%'
+					  	ORDER BY PRODUCTNUM DESC
+					)
+			B)
+		WHERE R BETWEEN #{startNum} AND #{lastNum}
+  	</select>
+  	
   	<select id="getProductNum" resultType="Long">
 		SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
 	</select>
-  
-  	<select id="getProductList" resultType="ProductDTO">
-  		SELECT PRODUCTNUM, PRODUCTNAME, PRODUCTJUMSU
-  		FROM PRODUCT
-  		ORDER BY PRODUCTNUM DESC
-  	</select>
   	
 	<select id="getProductDetail" parameterType="ProductDTO" resultType="ProductDTO"> 
 		SELECT * FROM PRODUCT WHERE PRODUCTNUM=#{productNum}
 	</select>
 	
+	<!-- INSERT -->
 	<insert id="setProductAdd" parameterType="ProductDTO">
 		INSERT INTO PRODUCT
 		VALUES (#{productNum}, #{productName}, #{productDetail}, 0.0)
 	</insert>
 	
+	<!-- DELETE -->
 	<delete id="setProductDelete" parameterType="Long">
 		DELETE PRODUCT WHERE PRODUCTNUM=#{productNum}
 	</delete>
