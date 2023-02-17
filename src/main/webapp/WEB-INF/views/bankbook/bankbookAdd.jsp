@@ -34,7 +34,7 @@
 			</div>			
 			<div class="fw-bold fs-5 col-12 mt-3">
 				<label for="files" class="form-label">Image</label>
-				<input type="file" class="form-control" id="files" name="pic">
+				<input type="file" class="form-control" id="files" name="multipartFile">
 			</div>			
 			
 <!-- 			<fieldset class="mb-4">

@@ -32,6 +32,5 @@ public class BankbookImgDTO {
 	public void setOriName(String oriName) {
 		this.oriName = oriName;
 	}
-	
 
 }

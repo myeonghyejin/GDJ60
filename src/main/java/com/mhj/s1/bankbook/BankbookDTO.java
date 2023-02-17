@@ -8,6 +8,8 @@ public class BankbookDTO {
 	private Double bookRate;
 	private Integer bookSale;
 	
+	private BankbookImgDTO bankbookImgDTO;
+	
 	//getter, setter
 	public Long getBookNum() {
 		return bookNum;
@@ -44,6 +46,13 @@ public class BankbookDTO {
 			this.bookSale = 0;
 		}
 		this.bookSale = bookSale;
+	}
+	
+	public BankbookImgDTO getBankbookImgDTO() {
+		return bankbookImgDTO;
+	}
+	public void setBankbookImgDTO(BankbookImgDTO bankbookImgDTO) {
+		this.bankbookImgDTO = bankbookImgDTO;
 	}
 
 }

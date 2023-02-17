@@ -49,9 +49,32 @@
 			WHERE R BETWEEN #{startRow} AND #{lastRow}
   	</select>
   	
-  	<select id="getBankbookDetail" parameterType="BankbookDTO" resultType="BankbookDTO">
-  		SELECT * FROM BANKBOOK WHERE BOOKNUM=#{bookNum}
+  	<select id="getBankbookDetail" parameterType="BankbookDTO" resultMap="bankbookDetailResult">
+  		SELECT *
+		FROM BANKBOOK
+			LEFT OUTER JOIN
+			BANKBOOKIMG
+			USING (BOOKNUM)
+		WHERE BOOKNUM = #{bookNum}
   	</select>
+  	
+  	<resultMap type="BankbookDTO" id="bankbookDetailResult">
+  		<!-- Primary Key 용도 -->
+  		<id column="BOOKNUM" property="bookNum"/>
+  		<!-- Primary Key를 제외한 그 외 나머지 -->
+  		<result column="BOOKNAME" property="bookName"/>
+  		<result column="BOOKDETAIL" property="bookDetail"/>
+  		<result column="BOOKRATE" property="bookRate"/>
+  		<result column="BOOKSALE" property="bookSale"/>
+  		<!-- 1:1, 1:1과 1:N이 함께 있을 때 association 먼저 선언해야 함 -->
+  		<association property="bankbookImgDTO" javaType="BankbookImgDTO">
+  			<id column="FILENUM" property="fileNum"/>
+  			<result column="FILENAME" property="fileName"/>
+  			<result column="ORINAME" property="oriName"/>
+  		</association>
+  		<!-- 1:N, List -->
+  		<!-- <collection property=""></collection> -->	
+  	</resultMap>
   	
   	<!-- INSERT -->
   	<insert id="setBankbookAdd" parameterType="BankbookDTO">

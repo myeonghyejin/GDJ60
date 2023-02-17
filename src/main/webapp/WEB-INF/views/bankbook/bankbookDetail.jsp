@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>DETAIL</title>
 </head>
 <body>
 	<h1>Bankbook Detail Page</h1>
@@ -16,6 +16,11 @@
 			<h3>상세 정보 : ${DTO.bookDetail}</h3>
 			<h3>이자율 : ${DTO.bookRate}</h3>
 			<h3>판매 여부 : ${DTO.bookSale}</h3>
+			<div>
+				<c:if test="${not empty DTO.bankbookImgDTO}">
+					<img alt="" src="../resources/upload/bankbook/${DTO.bankbookImgDTO.fileName}">
+				</c:if>
+			</div>
 			<a href="./delete?bookNum=${DTO.bookNum}">삭제</a>
 		</c:when>
 		<c:otherwise>
