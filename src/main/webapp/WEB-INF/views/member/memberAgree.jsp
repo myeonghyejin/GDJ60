@@ -45,7 +45,7 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="../resources/js/agree.js"></script>
+<script type="text/javascript" src="../resources/js/memberAgree.js"></script>
 <c:import url="../template/common_js.jsp"></c:import>
 </body>
 </html>
