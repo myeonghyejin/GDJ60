@@ -31,11 +31,14 @@
 			<div class="form-check form-switch justify-content-center">
 				<input class="form-check-input" name="bookSale" type="checkbox" role="switch" id="flexSwitchCheckDefault">
 				<label class="form-check-label" for="flexSwitchCheckDefault">판매 여부</label>
-			</div>			
-			<div class="fw-bold fs-5 col-12 mt-3">
-				<label for="files" class="form-label">Image</label>
-				<input type="file" class="form-control" id="files" name="multipartFile">
-			</div>			
+			</div>	
+			<div id="fileList">
+				<!-- <div class="fw-bold fs-5 col-12 mt-3">
+					<label for="files" class="form-label">Image</label>
+					<input type="file" class="form-control" id="files" name="multipartFile">
+				</div>			 -->
+				<button type="button" id="fileAdd">ADD</button>
+			</div>		
 			
 <!-- 			<fieldset class="mb-4">
 				<legend class="fw-bold fs-5">판매 여부</legend>
@@ -62,6 +65,11 @@
 		</div>
    </form>
 </div>
+<script src="../resources/js/fileManager.js"></script>
+<script>
+	setMax(1);
+	setParam("multipartFile")
+</script>
+<c:import url="../template/common_js.jsp"></c:import>
 </body>
-	<c:import url="../template/common_js.jsp"></c:import>
 </html>
