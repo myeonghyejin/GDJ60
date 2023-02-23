@@ -20,7 +20,7 @@ public class BankbookService {
 	
 	//testcase에서 테스트 시 NullPointerException, 실제 Server에서는 괜찮음
 	//API 추가
-	@Autowired
+	//@Autowired
 	private ServletContext servletContext;
 	
 	@Autowired

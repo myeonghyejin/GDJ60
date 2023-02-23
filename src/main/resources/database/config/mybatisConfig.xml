@@ -14,6 +14,12 @@
   		<typeAlias type="com.mhj.s1.bankbook.BankbookDTO" alias="BankbookDTO"/>
   		<typeAlias type="com.mhj.s1.bankbook.BankbookImgDTO" alias="BankbookImgDTO"/>
   		
+  		<typeAlias type="com.mhj.s1.bankbook.BankbookCommentDTO" alias="BankbookCommentDTO"/>
+  		<typeAlias type="com.mhj.s1.board.BbsDTO" alias="BbsDTO"/>
+  		<typeAlias type="com.mhj.s1.board.BoardDTO" alias="BoardDTO"/>
+  		<typeAlias type="com.mhj.s1.board.notice.NoticeDTO" alias="NoticeDTO"/>
+  		<typeAlias type="com.mhj.s1.board.qna.QnaDTO" alias="QnaDTO"/>
+  		
   		<typeAlias type="com.mhj.s1.util.Pager" alias="Pager"/>
   		
   		<typeAlias type="java.lang.Long" alias="Long"/>

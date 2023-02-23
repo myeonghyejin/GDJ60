@@ -2,6 +2,24 @@ package com.mhj.s1.util;
 
 public class Pager {
 	
+	private Long num;
+	
+	public Long getNum() {
+		return num;
+	}
+	public void setNum(Long num) {
+		this.num = num;
+	}
+
+	private Long bookNum;
+	
+	public Long getBookNum() {
+		return bookNum;
+	}
+	public void setBookNum(Long bookNum) {
+		this.bookNum = bookNum;
+	}
+
 	//검색 종류(사용할 Column명)
 	private String kind;
 	
