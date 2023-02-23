@@ -16,7 +16,7 @@
 
 	<!-- Title -->
 	<div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
-		<p class="fs-2" style="font-family: 'Impact'">Notice Page</p>
+		<p class="fs-2" style="font-family: 'Impact'">Page</p>
 	</div>
 
 	<div class="row col-md-4 mx-auto my-5">

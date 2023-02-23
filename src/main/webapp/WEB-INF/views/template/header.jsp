@@ -12,7 +12,7 @@
             <li class="nav-item"><a class="nav-link" style="font-family: 'Impact'" href="/notice/list">NOTICE</a></li>
             <li class="nav-item"><a class="nav-link" style="font-family: 'Impact'" href="/product/list">PRODUCT</a></li>
             <li class="nav-item"><a class="nav-link" style="font-family: 'Impact'" href="/bankbook/list">BANKBOOK</a></li>
-            <li class="nav-item"><a class="nav-link" style="font-family: 'Impact'" href="#">ETC</a></li>
+            <li class="nav-item"><a class="nav-link" style="font-family: 'Impact'" href="/qna/list">QNA</a></li>
         </ul>
 	    <ul class="navbar-nav">
         	<c:if test="${empty member}">

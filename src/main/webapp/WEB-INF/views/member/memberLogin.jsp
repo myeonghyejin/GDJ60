@@ -47,7 +47,7 @@
 			
 			<!-- Submit button -->
 			<div class="row justify-content-center mx-auto">
- 				<button type="submit" class="btn btn-outline-warning col-2 btn-block mb-4">Sign in</button>
+ 				<button type="submit" class="btn btn-primary col-2 btn-block mb-4">Sign in</button>
  			</div>
 		</form>
 	</div>
