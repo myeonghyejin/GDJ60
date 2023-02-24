@@ -30,8 +30,7 @@ public class QnaDAO implements BoardDAO {
 
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(NAMESPACE+"setBoardAdd", bbsDTO);
 	}
 
 	@Override
@@ -48,8 +47,15 @@ public class QnaDAO implements BoardDAO {
 
 	@Override
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", boardDTO);
+	}
+	
+	public int setStepUpdate(QnaDTO qnaDTO) throws Exception {
+		return sqlSession.update(NAMESPACE+"setStepUpdate", qnaDTO);
+	}
+	
+	public int setReplyAdd(QnaDTO qnaDTO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"setReplyAdd", qnaDTO);
 	}
 
 }

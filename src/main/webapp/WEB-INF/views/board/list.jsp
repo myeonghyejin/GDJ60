@@ -16,7 +16,7 @@
 
 	<!-- Title -->
 	<div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
-		<p class="fs-2" style="font-family: 'Impact'">Page</p>
+		<p class="fs-2" style="font-family: 'Impact'">${boardName} List Page</p>
 	</div>
 
 	<div class="row col-md-4 mx-auto my-5">
@@ -34,7 +34,14 @@
 				<c:forEach items="${list}" var="DTO">
 					<tr>
 						<td>${DTO.num}</td>
-						<td><a href="./detail">${DTO.title}</a></td>
+						<td>
+							<c:catch>
+								<!-- Notice에는 Depth 속성이 없기 때문에 Exception 발생합니다. -->
+								<!-- Exception 처리 -->
+								<c:forEach begin="1" end="${DTO.depth}">[re]</c:forEach>
+							</c:catch>
+							<a href="./detail?num=${DTO.num}">${DTO.title}</a>
+						</td>
 						<td>${DTO.writer}</td>
 						<td>${DTO.regDate}</td>
 						<td>${DTO.hit}</td>
@@ -101,7 +108,12 @@
 			</div>
 		</div>
 	</form>
-		
+	
+	<!-- 상품 등록 버튼 -->
+	<div class="row justify-content-center mx-auto">
+		<a href=./add class="btn btn-primary col-3">게시글 등록</a>
+	</div>
+	
 	</div>
 </div>
 

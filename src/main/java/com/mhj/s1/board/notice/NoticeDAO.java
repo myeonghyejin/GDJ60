@@ -26,19 +26,16 @@ public class NoticeDAO implements BoardDAO {
 
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE+"getBoardList", pager);
 	}
 
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(NAMESPACE+"setBoardAdd", bbsDTO);
 	}
 
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -49,9 +46,8 @@ public class NoticeDAO implements BoardDAO {
 	}
 
 	@Override
-	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public NoticeDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getBoardDetail", boardDTO);
 	}
 
 }
