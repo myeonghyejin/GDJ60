@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.mhj.s1.board.BoardFileDTO;
+
 @Component
 public class FileManager {
 	
@@ -42,6 +44,12 @@ public class FileManager {
 		FileCopyUtils.copy(multipartFile.getBytes(), file);
 		
 		return name;
+	}
+	
+	//File을 HDD에서 삭제
+	public boolean fileDelete(String path, String fileName) {
+		File file = new File(path, fileName);
+		return file.delete();
 	}
 
 }

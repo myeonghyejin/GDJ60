@@ -1,6 +1,9 @@
 package com.mhj.s1.board.qna;
 
+import java.nio.file.Files;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +29,7 @@ public class QnaController {
 	
 	@ModelAttribute("boardName")
 	public String getBoardName() {
-		return "QnA";
+		return "qna";
 	}
 	
 	//Select(List)
@@ -54,10 +57,10 @@ public class QnaController {
 	
 	//Insert (DB에 Insert)
 	@PostMapping("add")
-	public ModelAndView setBoardAdd(QnaDTO qnaDTO) throws Exception {
+	public ModelAndView setBoardAdd(QnaDTO qnaDTO, MultipartFile [] files, HttpSession session) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		int result = qnaService.setBoardAdd(qnaDTO);
+		int result = qnaService.setBoardAdd(qnaDTO, files, session);
 		
 		String message = "등록이 실패했쯤다!ㅠㅠ";
 		
@@ -108,6 +111,27 @@ public class QnaController {
 		modelAndView.setViewName("common/result");
 		modelAndView.addObject("result", message);
 		modelAndView.addObject("URL", "./detail?num="+qnaDTO.getNum());
+		
+		return modelAndView;
+	}
+	
+	//Delete
+	@PostMapping("delete")
+	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.setViewName("common/result");
+		
+		int result = qnaService.setBoardDelete(bbsDTO, session);
+		
+		String message = "삭제되지 않았습니다.";
+				
+		if(result > 0) {
+			message = "삭제되었습니다.";
+		}
+		
+		modelAndView.addObject("result", message);
+		modelAndView.addObject("URL", "./list");
 		
 		return modelAndView;
 	}

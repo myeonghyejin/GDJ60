@@ -40,8 +40,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="qnaCondition"></include>
 	</select>
 	
-	<select id="getBoardDetail" resultType="QnaDTO" parameterType="BbsDTO">
+	<select id="getBoardDetail" resultMap="getBoardDetailResult" parameterType="BbsDTO">
 		SELECT * FROM QNA
+			LEFT OUTER JOIN
+			QNAFILES
+			USING (NUM)
+		WHERE NUM = #{num}
+	</select>
+	
+	<resultMap type="QnaDTO" id="getBoardDetailResult">
+		<id column="NUM" property="num"/>
+		<result column="TITLE" property="title"/>
+		<result column="CONTENTS" property="contents"/>
+		<result column="WRITER" property="writer"/>
+		<result column="REGDATE" property="regDate"/>
+		<result column="HIT" property="hit"/>
+		<result column="DEPTH" property="depth"/>
+		<!-- 1 : N -->
+		<!-- property : 멤버 변수 이름 -->
+		<!-- javaType : property의 데이터 타입 -->
+		<!-- ofType : Generic 타입 -->
+		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+			<id column="FILENUM" property="fileNum"/>
+			<result column="FILENAME" property="fileName"/>
+			<result column="ORINAME" property="oriName"/>
+		</collection>
+	</resultMap>
+	
+	<select id="getBoardFileList" resultType="BoardFileDTO" parameterType="BbsDTO">
+		SELECT * FROM QNAFILES
 		WHERE NUM = #{num}
 	</select>
 	
@@ -54,6 +81,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(#{num}, #{title}, #{contents}, #{writer}, SYSDATE, 0, #{num}, 0, 0)
 	</insert>
 	
+	<insert id="setBoardFileAdd" parameterType="BoardFileDTO">
+		INSERT INTO QNAFILES (FILENUM, NUM, FILENAME, ORINAME)
+		VALUES (QNA_SEQ.NEXTVAL, #{num}, #{fileName}, #{oriName})
+	</insert>
+	
 	<insert id="setReplyAdd" parameterType="QnaDTO">
 		INSERT INTO QNA (NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP, DEPTH)
 		VALUES(QNA_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE, 0, #{ref}, #{step}, #{depth})
@@ -64,5 +96,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE QNA SET STEP = STEP + 1
 		WHERE REF = #{ref} AND STEP > #{step}
 	</update>
+	
+	<!-- DELETE -->
+	<delete id="setBoardDelete" parameterType="BbsDTO">
+		DELETE QNA WHERE NUM = #{num}
+	</delete>
 
 </mapper>

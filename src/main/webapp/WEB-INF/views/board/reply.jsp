@@ -33,12 +33,8 @@
 				<textarea name="contents" class="form-control" id="contents" rows="3" placeholder="상세 정보 입력"></textarea><br>
 			</div>
 			<div id="fileList">
-			<!-- <div class="fw-bold fs-5 col-12 mt-3">
-				<label for="files" class="form-label">Image</label>
-				<input type="file" class="form-control" id="files" name="multipartFile">
-			</div>			 -->
-			<button type="button" id="fileAdd">ADD</button>
-			</div>		
+				<button type="button" class="btn btn-outline-primary" id="fileAdd">ADD</button>
+			</div>			
 			<div class="row justify-content-center my-5">
 				<button type="submit" class="btn btn-primary col-2">글쓰기</button>
 			</div>

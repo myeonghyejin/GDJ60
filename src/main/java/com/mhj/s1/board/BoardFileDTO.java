@@ -1,0 +1,36 @@
+package com.mhj.s1.board;
+
+public class BoardFileDTO {
+	
+	private Long fileNum;
+	private Long num;
+	private String fileName;
+	private String OriName;
+	
+	//Getter, Setter
+	public Long getFileNum() {
+		return fileNum;
+	}
+	public void setFileNum(Long fileNum) {
+		this.fileNum = fileNum;
+	}
+	public Long getNum() {
+		return num;
+	}
+	public void setNum(Long num) {
+		this.num = num;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getOriName() {
+		return OriName;
+	}
+	public void setOriName(String oriName) {
+		OriName = oriName;
+	}
+
+}

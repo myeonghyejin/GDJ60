@@ -37,7 +37,7 @@
 					<input type="file" class="form-control" id="files" name="files">
 					<button type="button">X</button>
 				</div> -->
-			<button type="button" class="btn btn-outline-primary" id="fileAdd">ADD</button>
+				<button type="button" class="btn btn-outline-primary" id="fileAdd">ADD</button>
 			</div>		
 			<div class="row justify-content-center my-5">
 				<button type="submit" class="btn btn-primary col-2">글쓰기</button>
@@ -48,7 +48,7 @@
 <script src="../resources/js/fileManager.js"></script>
 <script>
 	setMax(5);
-	setParam("Files")
+	setParam("files")
 </script>
 <c:import url="../template/common_js.jsp"></c:import>
 </body>
