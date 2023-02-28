@@ -21,7 +21,7 @@
 		<div class="row col-md-4 mx-auto my-5">
 			<div class="fw-bold fs-5 col-12">
 				<label for="writer" class="form-label">작성자</label>
-				<input type="text" name="writer" class="form-control" id="writer"><br>
+				<input type="text" name="writer" class="form-control" id="writer" value="${member.id}" readonly><br>
 			</div>
 			<div class="fw-bold fs-5 col-12">
 				<label for="title" class="form-label">제목</label>

@@ -36,7 +36,7 @@ public class MemberController {
 	//setMemberAdd (입력 폼으로 이동)
 	@RequestMapping(value="add", method=RequestMethod.GET)
 	public ModelAndView setMemberAdd(ModelAndView modelAndView) throws Exception {
-		MemberDTO memberDTO = new MemberDTO();	
+		MemberDTO memberDTO = new MemberDTO();
 		modelAndView.setViewName("member/memberAdd");
 		return modelAndView;
 	}

@@ -46,21 +46,20 @@
 	</div>
 	
 	<!-- Buttons -->
-<%-- 	<div class="row col-md-4 justify-content-center mx-auto">
-		<c:if test="${boardName ne 'Notice'}">
-			<a href="./reply?num=${DTO.num}" class="btn btn-primary col-3 mx-1">답글 달기</a>
-		</c:if>
-		<a href="./update?num=${DTO.num}" class="btn btn-primary col-2 mx-1">수정</a>
-		<a href="./delete?num=${DTO.num}" class="btn btn-primary col-2 mx-1">삭제</a>
-		<a href="./list" class="btn btn-primary col-2 mx-1">목록</a>
-	</div> --%>
-	
-	<div class="row col-md-4 justify-content-center mx-auto">
+	<c:if test="${member.id eq DTO.writer}">
 		<form action="./update" id="frm">
-			<input type="hidden" name="num" value="${DTO.num}">
-			<button id="update" type="submit" class="btn btn-primary col-2 mx-1">수정</button>
-			<button id="delete" type="button" class="btn btn-primary col-2 mx-1">삭제</button>
+			<div class="row col-md-4 justify-content-center mx-auto">
+				<c:if test="${boardName ne 'notice'}">
+					<a href="./reply?num=${DTO.num}" class="btn btn-outline-primary col-2 mx-1">답글 달기</a>
+				</c:if>
+				<input type="hidden" name="num" value="${DTO.num}">
+				<button id="update" type="submit" class="btn btn-outline-primary col-2 mx-1">수정</button>
+				<button id="delete" type="button" class="btn btn-outline-primary col-2 mx-1">삭제</button>
+			</div>
 		</form>
+	</c:if>
+	<div class="row col-md-4 justify-content-center mx-auto my-2">
+		<a href="./list" class="btn btn-primary col-2 mx-1">목록</a>
 	</div>
 
 </div>

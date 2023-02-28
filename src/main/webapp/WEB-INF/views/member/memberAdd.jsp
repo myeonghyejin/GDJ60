@@ -38,7 +38,7 @@
 
 			<div class="col-md-6 my-1">
     			<label for="pw" class="form-label fw-bold fs-6">Password</label>
-    			<input type="password" name="pw" class="form-control" id="pwCheck" placeholder="비밀번호 확인">
+    			<input type="password" name="pwCheck" class="form-control" id="pwCheck" placeholder="비밀번호 확인">
 				<div id="pwCheckResult" class="my-2"></div>
 			</div>
 			
@@ -61,7 +61,7 @@
 			</div>
 			
 			<div class="row justify-content-center my-3">
-				<button type="button" class="btn btn-primary col-2" id="btn">등록</button>
+				<button type="submit" class="btn btn-primary col-2" id="btn">등록</button>
 			</div>
 		</div>
 	</form>

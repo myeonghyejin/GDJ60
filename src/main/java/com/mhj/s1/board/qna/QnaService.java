@@ -47,7 +47,6 @@ public class QnaService implements BoardService {
 		return qnaDAO.getBoardFileDetail(boardFileDTO);
 	}
 
-
 	/** Insert **/
 	//Insert (Add)
 	@Override

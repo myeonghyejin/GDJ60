@@ -43,7 +43,16 @@
 							</c:catch>
 							<a href="./detail?num=${DTO.num}">${DTO.title}</a>
 						</td>
-						<td>${DTO.writer}</td>
+						<td>
+							<c:choose>
+								<c:when test="${boardName eq 'notice'}">
+									관리자
+								</c:when>
+								<c:otherwise>
+									${DTO.writer}
+								</c:otherwise>
+							</c:choose>
+						</td>
 						<td>${DTO.regDate}</td>
 						<td>${DTO.hit}</td>
 					</tr>
@@ -111,9 +120,18 @@
 	</form>
 	
 	<!-- 상품 등록 버튼 -->
-	<div class="row justify-content-center mx-auto">
-		<a href=./add class="btn btn-primary col-3">게시글 등록</a>
-	</div>
+	<c:if test="${not empty member}">
+		<c:if test="${boardName eq 'notice' and member.roleDTOs.roleName eq 'ADMIN'}">
+			<div class="row justify-content-center mx-auto">
+				<a href=./add class="btn btn-primary col-3">게시글 등록</a>
+			</div>
+		</c:if>
+		<c:if test="${boardName ne 'notice'}">
+			<div class="row justify-content-center mx-auto">
+				<a href=./add class="btn btn-primary col-3">게시글 등록</a>
+			</div>
+		</c:if>
+	</c:if>
 	
 	</div>
 </div>

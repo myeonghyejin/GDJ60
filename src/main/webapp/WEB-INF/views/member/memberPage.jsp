@@ -15,11 +15,14 @@
 			<p class="fs-2" style="font-family: 'Impact'">MY PAGE</p>
 		</div>
 		<div class="row col-md-4 mx-auto my-5">
-			<h3>${DTO.name}</h3>
-			<h3>${DTO.phone}</h3>
-			<h3>${DTO.email}</h3>
+			<div class="row mx-auto text-center border-bottom border-dark pb-4">
+				<p class="fs-5">이름 : ${DTO.name}</p>
+				<p class="fs-5">전화 번호 : ${DTO.phone}</p>
+				<p class="fs-5">E-mail : ${DTO.email}</p>
+				<p class="fs-5">등급 : ${DTO.roleDTOs.roleName}</p>
+			</div>
 			<div class="row justify-content-center mx-auto">
-				<a href="./update" class="btn btn-outline-warning col-2">정보 수정</a>
+				<a href="./update" class="btn btn-primary col-2 my-4">정보 수정</a>
 			</div>
 		</div>
 	</div>

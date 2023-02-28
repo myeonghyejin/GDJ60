@@ -13,11 +13,29 @@
   		ORDER BY ID DESC
   	</select>
   	
-  	<select id="getMemberLogin" parameterType="MemberDTO" resultType="MemberDTO">
+  	<select id="getMemberLogin" parameterType="MemberDTO" resultMap="getMemberRole">
   		SELECT *
   		FROM BANKMEMBERS
+  			INNER JOIN
+  			MEMBER_ROLE
+  			USING (ID)
+  			INNER JOIN
+  			ROLE
+  			USING (ROLENUM)
   		WHERE ID=#{id}
   	</select>
+  	
+  	<resultMap type="MemberDTO" id="getMemberRole">
+  		<id column="ID" property="id"/>
+  		<result column="PW" property="pw"/>
+  		<result column="NAME" property="name"/>
+  		<result column="PHONE" property="phone"/>
+  		<result column="EMAIL" property="email"/>
+  		<association property="roleDTOs" javaType="RoleDTO">
+  			<id column="ROLENUM" property="roleNum"/>
+  			<result column="ROLENAME" property="roleName"/>
+  		</association>
+  	</resultMap>
   	
   	<select id="getMemberPage" parameterType="MemberDTO" resultType="MemberDTO">
   		SELECT *
