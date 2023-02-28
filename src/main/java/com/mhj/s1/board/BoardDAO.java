@@ -13,4 +13,6 @@ public interface BoardDAO extends BbsDAO {
 	//Insert (File Add)
 	public int setBoardFileAdd(BoardFileDTO boardFileDTO) throws Exception;
 	
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception;
+	
 }

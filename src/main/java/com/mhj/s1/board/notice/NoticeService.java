@@ -34,11 +34,16 @@ public class NoticeService implements BoardService {
 		pager.makeNum(noticeDAO.getTotalCount(pager));
 		return noticeDAO.getBoardList(pager);
 	}
-	
+
 	//Select (Detail)
 	@Override
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
 		return noticeDAO.getBoardDetail(boardDTO);
+	}
+	
+	@Override
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
+		return noticeDAO.getBoardFileDetail(boardFileDTO);
 	}
 	
 	/** Insert **/

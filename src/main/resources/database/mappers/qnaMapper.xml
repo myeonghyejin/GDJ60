@@ -72,6 +72,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE NUM = #{num}
 	</select>
 	
+	<select id="getBoardFileDetail" resultType="BoardFileDTO" parameterType="BoardFileDTO">
+		SELECT * FROM QNAFILES WHERE FILENUM=#{fileNum}
+	</select>
+	
 	<!-- INSERT -->
 	<insert id="setBoardAdd" parameterType="QnaDTO">
 		<selectKey keyProperty="num" resultType="Long" order="BEFORE">

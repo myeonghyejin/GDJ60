@@ -38,7 +38,7 @@
 				</c:forEach>
 			</c:when>
 			<c:otherwise>
-				<div class="row col-md-4 mx-auto text-center ">
+				<div class="row col-md-4 mx-auto text-center">
 					<p class="fs-2">존재하지 않는 페이지입니다.</p>
 				</div>
 			</c:otherwise>

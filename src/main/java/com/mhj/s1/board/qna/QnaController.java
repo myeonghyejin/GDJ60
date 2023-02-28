@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mhj.s1.board.BbsDTO;
 import com.mhj.s1.board.BbsService;
 import com.mhj.s1.board.BoardDTO;
+import com.mhj.s1.board.BoardFileDTO;
 import com.mhj.s1.util.Pager;
 
 @Controller
@@ -132,6 +133,18 @@ public class QnaController {
 		
 		modelAndView.addObject("result", message);
 		modelAndView.addObject("URL", "./list");
+		
+		return modelAndView;
+	}
+	
+	@GetMapping("fileDownload")
+	public ModelAndView getFileDown(BoardFileDTO boardFileDTO) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		boardFileDTO = qnaService.getBoardFileDetail(boardFileDTO);
+		
+		modelAndView.addObject("boardFile", boardFileDTO);
+		modelAndView.setViewName("fileDownloadView");
 		
 		return modelAndView;
 	}

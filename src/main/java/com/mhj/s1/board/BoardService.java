@@ -8,5 +8,7 @@ public interface BoardService extends BbsService {
 	
 	//Select (Detail)
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception;
+	
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception;
 
 }

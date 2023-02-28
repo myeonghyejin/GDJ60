@@ -67,6 +67,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM NOTICEFILES
 		WHERE NUM = #{num}
 	</select>
+	
+	<select id="getBoardFileDetail" resultType="BoardFileDTO" parameterType="BoardFileDTO">
+		SELECT * FROM NOTICEFILES WHERE FILENUM=#{fileNum}
+	</select>
   	
   	<!-- INSERT -->
   	<insert id="setBoardAdd" parameterType="BbsDTO">

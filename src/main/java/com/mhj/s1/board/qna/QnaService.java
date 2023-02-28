@@ -41,6 +41,12 @@ public class QnaService implements BoardService {
 	public BoardDTO getBoardDetail(BoardDTO boardDTO) throws Exception {
 		return qnaDAO.getBoardDetail(boardDTO);
 	}
+	
+	@Override
+	public BoardFileDTO getBoardFileDetail(BoardFileDTO boardFileDTO) throws Exception {
+		return qnaDAO.getBoardFileDetail(boardFileDTO);
+	}
+
 
 	/** Insert **/
 	//Insert (Add)
@@ -127,5 +133,5 @@ public class QnaService implements BoardService {
 		}
 		return result;
 	}
-
+	
 }
