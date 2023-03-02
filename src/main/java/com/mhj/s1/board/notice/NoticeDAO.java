@@ -66,7 +66,7 @@ public class NoticeDAO implements BoardDAO {
 	/** Update **/
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
-		return 0;
+		return sqlSession.update(NAMESPACE+"setBoardUpdate", bbsDTO);
 	}
 
 	/** Delete **/

@@ -33,16 +33,5 @@ public class DBConnection {
 		st.close();
 		con.close();
 	}
-	
-	//배포 전 삭제 하세요
-	public static void main(String[] args) {
-		try {
-			Connection con = DBConnection.getConnection();
-			System.out.println(con != null);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 }
