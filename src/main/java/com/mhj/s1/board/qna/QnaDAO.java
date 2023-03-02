@@ -37,7 +37,7 @@ public class QnaDAO implements BoardDAO {
 	
 	@Override
 	public List<BoardFileDTO> getBoardFileList(BbsDTO bbsDTO) throws Exception {
-		return null;
+		return sqlSession.selectList(NAMESPACE+"getBoardFileList", bbsDTO);
 	}
 	
 	@Override

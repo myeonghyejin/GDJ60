@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>REPLY ADD</title>
+<title>UPDATE</title>
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>
@@ -13,16 +13,15 @@
 <div class="container-fluid my-5">
 	<!-- Title -->
 	<div class="row col-md-4 mx-auto text-center border-bottom border-dark pb-2">
-		<p class="fs-2" style="font-family: 'Impact'">${boardName} Reply Page</p>
+		<p class="fs-2" style="font-family: 'Impact'">${boardName} Update Page</p>
 	</div>
 	
 	<!-- Contents -->
-	<form action="./reply" method = "post" enctype="multipart/form-data">
+	<form action="./add" method = "post" enctype="multipart/form-data">
 		<div class="row col-md-4 mx-auto my-5">
-			<input type="hidden" name="num" value="${boardDTO.num}">
 			<div class="fw-bold fs-5 col-12">
 				<label for="writer" class="form-label">작성자</label>
-				<input type="text" name="writer" class="form-control" id="writer"><br>
+				<input type="text" name="writer" class="form-control" id="writer" value="${member.id}" readonly><br>
 			</div>
 			<div class="fw-bold fs-5 col-12">
 				<label for="title" class="form-label">제목</label>
@@ -33,8 +32,13 @@
 				<textarea name="contents" class="form-control" id="contents" rows="3" placeholder="상세 정보 입력"></textarea><br>
 			</div>
 			<div id="fileList">
+				<!-- <div class="fw-bold fs-5 col-12 mt-3">
+					<label for="files" class="form-label">Image</label>
+					<input type="file" class="form-control" id="files" name="files">
+					<button type="button">X</button>
+				</div> -->
 				<button type="button" class="btn btn-outline-primary" id="fileAdd">ADD</button>
-			</div>			
+			</div>		
 			<div class="row justify-content-center my-5">
 				<button type="submit" class="btn btn-primary col-2">글쓰기</button>
 			</div>
@@ -43,8 +47,8 @@
 </div>
 <script src="../resources/js/fileManager.js"></script>
 <script>
-	setMax(1);
-	setParam("multipartFile")
+	setMax(5);
+	setParam("files")
 </script>
 <c:import url="../template/common_js.jsp"></c:import>
 </body>

@@ -13,16 +13,10 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
+	/** INSERT **/
 	//getMemberList
 	public List<MemberDTO> getMemberList() throws Exception {
 		return memberDAO.getMemberList();
-	}
-	
-	//setMemberAdd
-	public int setMemberAdd(MemberDTO memberDTO) throws Exception {
-		int result = memberDAO.setMemberAdd(memberDTO);
-		result = memberDAO.setMemberRoleAdd(memberDTO);
-		return result;
 	}
 	
 	//getMemberLogin
@@ -45,9 +39,24 @@ public class MemberService {
 		return memberDAO.getMemberLogin(memberDTO);
 	}
 	
+	/** INSERT **/
+	//setMemberAdd
+	public int setMemberAdd(MemberDTO memberDTO) throws Exception {
+		int result = memberDAO.setMemberAdd(memberDTO);
+		result = memberDAO.setMemberRoleAdd(memberDTO);
+		return result;
+	}
+	
+	/** UPDATE **/
 	//setMemberUpdate
 	public int setMemberUpdate(MemberDTO memberDTO) throws Exception {
 		return memberDAO.setMemberUpdate(memberDTO);
+	}
+	
+	/** DELETE **/
+	//setMemberDelete
+	public int setMemberDelete(MemberDTO memberDTO) throws Exception {
+		return memberDAO.setMemberDelete(memberDTO);
 	}
 
 }

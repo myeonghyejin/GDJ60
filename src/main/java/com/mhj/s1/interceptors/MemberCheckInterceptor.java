@@ -1,5 +1,6 @@
 package com.mhj.s1.interceptors;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,8 +18,26 @@ public class MemberCheckInterceptor extends HandlerInterceptorAdapter {
 		// Controller 진입 전
 		//  return이 true라면 다음 Controller로 진행
 		//  return이 false라면 진행 X
-		System.out.println("Controller 진입 전 체크");
-		return true;
+		System.out.println("Member Check Interceptor");
+		
+		Object object = request.getSession().getAttribute("member");
+		
+		if(object != null) {
+			return true;
+		}
+		
+		System.out.println("Login 안 한 경우");
+		
+		//1. forward로 JSP를 찾아가기
+//		request.setAttribute("result", "권한이 없습니다.");
+//		request.setAttribute("URL", "../member/login");
+//		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/common/result.jsp");
+//		view.forward(request, response);
+		
+		//2. Redirect
+		response.sendRedirect("../../../../../member/login");
+		
+		return false;
 	}
 	
 	@Override

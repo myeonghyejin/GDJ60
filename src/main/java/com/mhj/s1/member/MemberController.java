@@ -19,37 +19,21 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	/** SELECT **/
 	@RequestMapping(value="memberAgree", method = RequestMethod.GET)
 	public void setMemberAgree() throws Exception {
 		
 	}
 	
 	//getMemberList
-	@RequestMapping(value="list")
-	public ModelAndView getMemberList(ModelAndView modelAndView) throws Exception {
-		List<MemberDTO> ar = memberService.getMemberList();
-		modelAndView.setViewName("member/memberList");
-		modelAndView.addObject("list", ar);
-		return modelAndView;
-	}
-
-	//setMemberAdd (입력 폼으로 이동)
-	@RequestMapping(value="add", method=RequestMethod.GET)
-	public ModelAndView setMemberAdd(ModelAndView modelAndView) throws Exception {
-		MemberDTO memberDTO = new MemberDTO();
-		modelAndView.setViewName("member/memberAdd");
-		return modelAndView;
-	}
-	
-	//setMemberAdd (DB에 INSERT)
-	@RequestMapping(value="add", method=RequestMethod.POST)
-	public ModelAndView setMemberAdd(MemberDTO memberDTO) throws Exception {
-		ModelAndView modelAndView = new ModelAndView();
-		int result = memberService.setMemberAdd(memberDTO);
-		modelAndView.setViewName("redirect:../");
-		return modelAndView;
-	}
-	
+		@RequestMapping(value="list")
+		public ModelAndView getMemberList(ModelAndView modelAndView) throws Exception {
+			List<MemberDTO> ar = memberService.getMemberList();
+			modelAndView.setViewName("member/memberList");
+			modelAndView.addObject("list", ar);
+			return modelAndView;
+		}
+		
 	//getMemberLogin (입력 폼으로 이동)
 	@RequestMapping(value="login", method=RequestMethod.GET)
 	public ModelAndView getMemberLogin(ModelAndView modelAndView) throws Exception {
@@ -90,6 +74,25 @@ public class MemberController {
 		return modelAndView;
 	}
 	
+	/** INSERT **/
+	//setMemberAdd (입력 폼으로 이동)
+	@RequestMapping(value="add", method=RequestMethod.GET)
+	public ModelAndView setMemberAdd(ModelAndView modelAndView) throws Exception {
+		MemberDTO memberDTO = new MemberDTO();
+		modelAndView.setViewName("member/memberAdd");
+		return modelAndView;
+	}
+	
+	//setMemberAdd (DB에 INSERT)
+	@RequestMapping(value="add", method=RequestMethod.POST)
+	public ModelAndView setMemberAdd(MemberDTO memberDTO) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		int result = memberService.setMemberAdd(memberDTO);
+		modelAndView.setViewName("redirect:../");
+		return modelAndView;
+	}
+	
+	/** UPDATE **/
 	//setMemberUpdate (입력 폼으로 이동)
 	@RequestMapping(value="update", method=RequestMethod.GET)
 	public ModelAndView setMemberUpdate(HttpSession session) throws Exception {
@@ -113,4 +116,8 @@ public class MemberController {
 		modelAndView.setViewName("redirect:./myPage");
 		return modelAndView;
 	}
+		
+	/** DELETE **/
+
+
 }

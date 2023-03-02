@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add</title>
+<title>ADD</title>
 <c:import url="../template/common_css.jsp"></c:import>
 </head>
 <body>

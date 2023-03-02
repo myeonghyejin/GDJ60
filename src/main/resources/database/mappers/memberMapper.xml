@@ -60,4 +60,10 @@
   		SET NAME=#{name}, PHONE=#{phone}, EMAIL=#{email}
   		WHERE ID=#{id}
   	</update>
+  	
+  	<!-- DELETE -->
+  	<delete id="setMemberDelete" parameterType="MemberDTO">
+  		DELETE BANKMEMBERS
+  		WHERE ID = #{id}
+  	</delete>
   </mapper>

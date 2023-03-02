@@ -46,7 +46,7 @@
 	</div>
 	
 	<!-- Buttons -->
-	<c:if test="${member.id eq DTO.writer}">
+<%-- 	<c:if test="${member.id eq DTO.writer}"> --%>
 		<form action="./update" id="frm">
 			<div class="row col-md-4 justify-content-center mx-auto">
 				<c:if test="${boardName ne 'notice'}">
@@ -57,7 +57,7 @@
 				<button id="delete" type="button" class="btn btn-outline-primary col-2 mx-1">삭제</button>
 			</div>
 		</form>
-	</c:if>
+<%-- 	</c:if> --%>
 	<div class="row col-md-4 justify-content-center mx-auto my-2">
 		<a href="./list" class="btn btn-primary col-2 mx-1">목록</a>
 	</div>

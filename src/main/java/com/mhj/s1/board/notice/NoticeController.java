@@ -100,6 +100,17 @@ public class NoticeController {
 	}
 	
 	/** Update **/
+	@GetMapping("update")
+	public ModelAndView setBoardUpdate(BoardDTO boardDTO) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		boardDTO = noticeService.getBoardDetail(boardDTO);
+		
+		modelAndView.addObject("DTO", boardDTO);
+		modelAndView.setViewName("board/update");
+		
+		return modelAndView;
+	}
 	
 	/** Delete **/
 	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
