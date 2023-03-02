@@ -30,7 +30,7 @@ for(let i=0; i<ch.length; i++) {
     }
 }
 
-ch.addEventListener("click", function {
+ch.addEventListener("click", function() {
     console.log("CLICK")
 })
 
