@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +34,7 @@ public class QnaController {
 		return "qna";
 	}
 	
+	/** Select **/
 	//Select(List)
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public ModelAndView getBoardList(Pager pager) throws Exception {
@@ -46,6 +48,31 @@ public class QnaController {
 		return modelAndView;
 	}
 	
+	@GetMapping("detail")
+	public ModelAndView getBoardDetail(QnaDTO qnaDTO) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		BoardDTO boardDTO = qnaService.getBoardDetail(qnaDTO);
+		
+		modelAndView.addObject("DTO", boardDTO);
+		modelAndView.setViewName("board/detail");
+		
+		return modelAndView;
+	}
+	
+	@GetMapping("fileDownload")
+	public ModelAndView getFileDown(BoardFileDTO boardFileDTO) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		boardFileDTO = qnaService.getBoardFileDetail(boardFileDTO);
+		
+		modelAndView.addObject("boardFile", boardFileDTO);
+		modelAndView.setViewName("fileDownloadView");
+		
+		return modelAndView;
+	}
+	
+	/** Insert **/
 	//Insert (입력 폼으로 이동)
 	@GetMapping("add")
 	public ModelAndView setBoardAdd() throws Exception {
@@ -76,17 +103,6 @@ public class QnaController {
 		return modelAndView;
 	}
 	
-	@GetMapping("detail")
-	public ModelAndView getBoardDetail(QnaDTO qnaDTO) throws Exception {
-		ModelAndView modelAndView = new ModelAndView();
-		
-		BoardDTO boardDTO = qnaService.getBoardDetail(qnaDTO);
-		
-		modelAndView.addObject("DTO", boardDTO);
-		modelAndView.setViewName("board/detail");
-		
-		return modelAndView;
-	}
 	
 	@GetMapping("reply")
 	public ModelAndView setReplyAdd(BoardDTO qnaDTO) throws Exception {
@@ -116,6 +132,20 @@ public class QnaController {
 		return modelAndView;
 	}
 	
+	/** Update **/
+	@GetMapping("update")
+	public ModelAndView setBoardUpdate(BoardDTO boardDTO) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		boardDTO = qnaService.getBoardDetail(boardDTO);
+		
+		modelAndView.addObject("DTO", boardDTO);
+		modelAndView.setViewName("board/update");
+		
+		return modelAndView;
+	}
+	
+	/** Delete **/
 	//Delete
 	@PostMapping("delete")
 	public ModelAndView setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
@@ -133,30 +163,6 @@ public class QnaController {
 		
 		modelAndView.addObject("result", message);
 		modelAndView.addObject("URL", "./list");
-		
-		return modelAndView;
-	}
-	
-	@GetMapping("fileDownload")
-	public ModelAndView getFileDown(BoardFileDTO boardFileDTO) throws Exception {
-		ModelAndView modelAndView = new ModelAndView();
-		
-		boardFileDTO = qnaService.getBoardFileDetail(boardFileDTO);
-		
-		modelAndView.addObject("boardFile", boardFileDTO);
-		modelAndView.setViewName("fileDownloadView");
-		
-		return modelAndView;
-	}
-	
-	@GetMapping("update")
-	public ModelAndView setBoardUpdate(BoardDTO boardDTO) throws Exception {
-		ModelAndView modelAndView = new ModelAndView();
-		
-		boardDTO = qnaService.getBoardDetail(boardDTO);
-		
-		modelAndView.addObject("DTO", boardDTO);
-		modelAndView.setViewName("board/update");
 		
 		return modelAndView;
 	}
