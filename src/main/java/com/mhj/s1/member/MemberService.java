@@ -14,6 +14,19 @@ public class MemberService {
 	private MemberDAO memberDAO;
 	
 	/** INSERT **/
+	public boolean getMemberIdCheck(MemberDTO memberDTO) throws Exception {
+		memberDTO = memberDAO.getMemberLogin(memberDTO);
+		
+		//중복 아니면 true, 중복이면 false
+		boolean check = true;
+		
+		if(memberDTO != null) {
+			check = false;
+		}
+		
+		return check;
+	}
+	
 	//getMemberList
 	public List<MemberDTO> getMemberList() throws Exception {
 		return memberDAO.getMemberList();

@@ -13,6 +13,11 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   
+   <error-page>
+      <error-code>404</error-code>
+      <location>/WEB-INF/views/common/error_400.jsp</location>
+   </error-page>
+  
  <!--  
    <filter>
     <display-name>CommonFilter</display-name>
@@ -37,12 +42,11 @@
      <url-pattern>/qna/*</url-pattern>
   </filter-mapping> -->
   
-  
-  
   <context-param>
-    <param-name>404</param-name>
-    <param-value>/WEB-INF/views/common/error_400.jsp</param-value>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/spring/*-context.xml</param-value>
   </context-param>
+  
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>

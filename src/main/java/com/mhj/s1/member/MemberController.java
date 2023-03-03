@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,19 +21,31 @@ public class MemberController {
 	private MemberService memberService;
 	
 	/** SELECT **/
+	@PostMapping(value="memberIdCheck")
+	public ModelAndView getMemberIdCheck(MemberDTO memberDTO) throws Exception {
+		boolean check = memberService.getMemberIdCheck(memberDTO);
+		
+		ModelAndView modelAndView = new ModelAndView();		
+		
+		modelAndView.addObject("result", check);
+		modelAndView.setViewName("common/ajaxResult");
+		
+		return modelAndView;
+	}
+	
 	@RequestMapping(value="memberAgree", method = RequestMethod.GET)
 	public void setMemberAgree() throws Exception {
 		
 	}
 	
 	//getMemberList
-		@RequestMapping(value="list")
-		public ModelAndView getMemberList(ModelAndView modelAndView) throws Exception {
-			List<MemberDTO> ar = memberService.getMemberList();
-			modelAndView.setViewName("member/memberList");
-			modelAndView.addObject("list", ar);
-			return modelAndView;
-		}
+	@RequestMapping(value="list")
+	public ModelAndView getMemberList(ModelAndView modelAndView) throws Exception {
+		List<MemberDTO> ar = memberService.getMemberList();
+		modelAndView.setViewName("member/memberList");
+		modelAndView.addObject("list", ar);
+		return modelAndView;
+	}
 		
 	//getMemberLogin (입력 폼으로 이동)
 	@RequestMapping(value="login", method=RequestMethod.GET)

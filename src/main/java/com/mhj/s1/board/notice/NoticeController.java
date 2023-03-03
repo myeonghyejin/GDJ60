@@ -71,6 +71,20 @@ public class NoticeController {
 		return modelAndView;
 	}
 	
+	@GetMapping("listMain")
+	public ModelAndView getBoardListMain(Pager pager) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		pager.setPerPage(5L);
+		
+		List<BbsDTO> ar = noticeService.getBoardList(pager);
+		
+		modelAndView.addObject("list", ar);
+		modelAndView.setViewName("common/listMain");
+		
+		return modelAndView;
+	}
+	
 	/** Insert **/
 	//Insert (Add, 입력 폼으로 이동)
 	@GetMapping("add")

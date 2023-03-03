@@ -31,11 +31,9 @@
 					<p class="fs-4 fw-bold text-center">${DTO.title}</p>
 					<p class="fs-5">${DTO.contents}</p>
 				</div>
-				<c:forEach items="${DTO.boardFileDTOs}" var="fileDTO">
-					<div class="row justify-content-center mx-auto">
-						 <a href="./fileDownload?fileNum=${fileDTO.fileNum}">${fileDTO.oriName}</a>
-					</div>
-				</c:forEach>
+				<c:if test="${not empty DTO.bankbookImgDTO}">
+					<img alt="" src="../resources/upload/bankbook/${DTO.bankbookImgDTO.fileName}">
+				</c:if>
 			</c:when>
 			<c:otherwise>
 				<div class="row col-md-4 mx-auto text-center">

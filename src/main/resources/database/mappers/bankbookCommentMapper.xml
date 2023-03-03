@@ -18,7 +18,7 @@
         </where>
      </sql>
   	
-  	<!-- SELECT -->
+  	<!-- Select -->
   	<select id="getTotalCount" resultType="Long" parameterType="Pager">
   		SELECT COUNT(NUM) FROM BANKBOOKCOMMENT
 		<include refid="commentCondition"></include>
@@ -37,4 +37,13 @@
 		)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
   	</select>
+  	
+  	<!-- Insert -->
+  	<insert id="setBoardAdd" parameterType="BbsDTO">
+<!--   		<selectKey keyProperty="num" resultType="Long" order="BEFORE">
+  			SELECT BKCOMMENT_SEQ.NEXTVAL FROM DUAL
+  		</selectKey> -->
+  		INSERT INTO BANKBOOKCOMMENT (NUM, BOOKNUM, CONTENTS, REGDATE, WRITER)
+  		VALUES (BKCOMMENT_SEQ.NEXTVAL, #{bookNum}, #{contents}, SYSDATE, #{writer})
+  	</insert>
   </mapper>

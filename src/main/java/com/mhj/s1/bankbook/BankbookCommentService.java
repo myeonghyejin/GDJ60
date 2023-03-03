@@ -2,8 +2,11 @@ package com.mhj.s1.bankbook;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mhj.s1.board.BbsDAO;
 import com.mhj.s1.board.BbsDTO;
@@ -16,6 +19,7 @@ public class BankbookCommentService implements BbsService {
 	@Autowired
 	private BbsDAO bankbookCommentDAO;
 	
+	/** Select **/
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
@@ -24,20 +28,22 @@ public class BankbookCommentService implements BbsService {
 		return bankbookCommentDAO.getBoardList(pager);
 	}
 
+	/** Insert **/
 	@Override
-	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public int setBoardAdd(BbsDTO bbsDTO, MultipartFile [] multipartFiles, HttpSession session) throws Exception {
+		return bankbookCommentDAO.setBoardAdd(bbsDTO);
 	}
 
+	/** Update **/
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/** Delete **/
 	@Override
-	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
+	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
