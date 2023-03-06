@@ -54,7 +54,24 @@
 		</c:choose>
 	</div>
 
+<!-- Buttons -->
+<%-- 	<c:if test="${member.id eq DTO.writer}"> --%>
+	<form action="./update" id="frm">
+		<div class="row col-md-4 justify-content-center mx-auto">
+			<a href="./delete?bookNum=${DTO.bookNum}" class="btn btn-outline-primary col-2 mx-1">삭제</a>
+			<a href="./update?bookNum=${DTO.bookNum}" class="btn btn-outline-primary col-2 mx-1">수정</a>
+		</div>
+	</form>
+<%-- 	</c:if> --%>
+<div class="row col-md-4 justify-content-center mx-auto my-2">
+	<a href="./list" class="btn btn-primary col-2 mx-1">목록</a>
+</div>
+</div>
+
 <!-- Reply -->
+<div class="row col-md-4 justify-content-center mx-auto" id="commentListResult">
+</div>
+
 <div class="row col-md-4 mx-auto my-5">
 	<div class="mb-3">
 	  <textarea class="form-control" rows="3" id="replyContents"></textarea>
@@ -64,23 +81,28 @@
 	</div>
 </div>
 
-<div class="row col-md-4 justify-content-center mx-auto" id="commentListResult">
-</div>
-
-<!-- Buttons -->
-<%-- 	<c:if test="${member.id eq DTO.writer}"> --%>
-		<form action="./update" id="frm">
-			<div class="row col-md-4 justify-content-center mx-auto">
-				<a href="./delete?bookNum=${DTO.bookNum}" class="btn btn-outline-primary col-2 mx-1">삭제</a>
-				<a href="./update?bookNum=${DTO.bookNum}" class="btn btn-outline-primary col-2 mx-1">수정</a>
+<!-- Update Form -->
+<!-- Modal -->
+<div class="modal fade" id="contentsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">수정</h1>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			<div class="form-floating">
+				<textarea class="form-control" placeholder="Leave a comment here" id="contents"></textarea>
+				<label for="floatingTextarea">Comments</label>
 			</div>
-		</form>
-<%-- 	</c:if> --%>
-	<div class="row col-md-4 justify-content-center mx-auto my-2">
-		<a href="./list" class="btn btn-primary col-2 mx-1">목록</a>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">취소</button>
+			<button type="button" class="btn btn-primary" data-comment-num="" id="contentsConfirm">확인</button>
+		</div>
+		</div>
 	</div>
 </div>
-
 
 <c:import url="../template/common_js.jsp"></c:import>
 <script src="/resources/js/bankbookReply.js"></script>
