@@ -34,18 +34,16 @@ public class BankbookCommentService implements BbsService {
 		return bankbookCommentDAO.setBoardAdd(bbsDTO);
 	}
 
-	/** Update **/
-	@Override
-	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	/** Delete **/
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO, HttpSession session) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return bankbookCommentDAO.setBoardDelete(bbsDTO);
+	}
+	
+	/** Update **/
+	@Override
+	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
+		return bankbookCommentDAO.setBoardUpdate(bbsDTO);
 	}
 
 }

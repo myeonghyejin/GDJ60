@@ -17,6 +17,7 @@ public class BankbookCommentDAO implements BbsDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.mhj.s1.bankbook.BankbookCommentDAO.";
 
+	/** Select **/
 	@Override
 	public Long getTotalCount(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
@@ -25,27 +26,25 @@ public class BankbookCommentDAO implements BbsDAO {
 
 	@Override
 	public List<BbsDTO> getBoardList(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE+"getBoardList", pager);
 	}
 
+	/** Insert **/
 	@Override
 	public int setBoardAdd(BbsDTO bbsDTO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"setBoardAdd", bbsDTO);
 	}
 
+	/** Update **/
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(NAMESPACE+"setBoardUpdate", bbsDTO);
 	}
-
+	
+	/** Delete **/
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(NAMESPACE+"setBoardDelete", bbsDTO);
 	}
-	
-	
 
 }

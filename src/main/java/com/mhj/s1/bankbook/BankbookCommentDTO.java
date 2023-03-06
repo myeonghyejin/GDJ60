@@ -13,6 +13,4 @@ public class BankbookCommentDTO extends BbsDTO {
 		this.bookNum = bookNum;
 	}
 	
-	
-	
 }

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +26,7 @@ public class BankbookCommentController {
 	private BbsService bankbookCommentService;
 	
 	/** Select **/
-	@RequestMapping(value = "list", method = RequestMethod.GET)
+	@GetMapping("list")
 	public ModelAndView getBoardList(Pager pager) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
 		
@@ -53,6 +54,26 @@ public class BankbookCommentController {
 		modelAndView.setViewName("common/ajaxResult");
 		
 		return modelAndView;
+	}
+	
+	/** Delete **/
+	@PostMapping("delete")
+	public ModelAndView setBoardDelete(BankbookCommentDTO bankbookCommentDTO) throws Exception{
+		ModelAndView modelAndView = new ModelAndView();
+		int result = bankbookCommentService.setBoardDelete(bankbookCommentDTO, null);
+		modelAndView.addObject("result", result);
+		modelAndView.setViewName("common/ajaxResult");
+	      
+		return modelAndView;
+	}
+	
+	@PostMapping("update")
+	public ModelAndView setBoardUpdate(BankbookCommentDTO bankbookCommentDTO) throws Exception{
+	   ModelAndView modelAndView = new ModelAndView();
+	   int result = bankbookCommentService.setBoardUpdate(bankbookCommentDTO);
+	   modelAndView.addObject("result", result);
+	   modelAndView.setViewName("common/ajaxResult");
+	   return modelAndView;
 	}
 
 }

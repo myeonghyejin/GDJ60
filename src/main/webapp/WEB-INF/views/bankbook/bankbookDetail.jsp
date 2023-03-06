@@ -64,7 +64,10 @@
 	</div>
 </div>
 
-	<!-- Buttons -->
+<div class="row col-md-4 justify-content-center mx-auto" id="commentListResult">
+</div>
+
+<!-- Buttons -->
 <%-- 	<c:if test="${member.id eq DTO.writer}"> --%>
 		<form action="./update" id="frm">
 			<div class="row col-md-4 justify-content-center mx-auto">
@@ -78,8 +81,6 @@
 	</div>
 </div>
 
-<div class="row col-md-4 justify-content-center mx-auto" id="commentListResult">
-</div>
 
 <c:import url="../template/common_js.jsp"></c:import>
 <script src="/resources/js/bankbookReply.js"></script>
