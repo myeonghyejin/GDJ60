@@ -112,8 +112,10 @@ public class QnaService implements BoardService {
 	public int setBoardUpdate(BbsDTO bbsDTO, MultipartFile [] multipartFiles, HttpSession session, Long [] fileNums) throws Exception {
 		int result = qnaDAO.setBoardUpdate(bbsDTO);
 		
-		for(Long fileNum : fileNums) {
-			qnaDAO.setBoardFileDelete(fileNum);
+		if(fileNums != null) {
+			for(Long fileNum : fileNums) {
+				qnaDAO.setBoardFileDelete(fileNum);
+			}
 		}
 		
 		//QNA File Insert
