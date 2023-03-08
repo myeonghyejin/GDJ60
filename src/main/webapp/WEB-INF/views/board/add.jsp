@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>ADD</title>
 <c:import url="../template/common_css.jsp"></c:import>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
@@ -46,10 +48,11 @@
    </form>
 </div>
 <script src="../resources/js/fileManager.js"></script>
-<script>
-	setMax(5);
-	setParam("files")
-</script>
 <c:import url="../template/common_js.jsp"></c:import>
+<script>
+	setParam("files")
+	setMax(5);
+	$('#contents').summernote();
+</script>
 </body>
 </html>

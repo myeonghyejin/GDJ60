@@ -109,6 +109,40 @@ public class QnaService implements BoardService {
 	
 	/** Update **/
 	@Override
+	public int setBoardUpdate(BbsDTO bbsDTO, MultipartFile [] multipartFiles, HttpSession session, Long [] fileNums) throws Exception {
+		int result = qnaDAO.setBoardUpdate(bbsDTO);
+		
+		for(Long fileNum : fileNums) {
+			qnaDAO.setBoardFileDelete(fileNum);
+		}
+		
+		//QNA File Insert
+		//file HDD에 저장
+		String realPath = session.getServletContext().getRealPath("resources/upload/qna/");
+		System.out.println(realPath);
+		
+		for(MultipartFile multipartFile : multipartFiles) {
+		
+			if(multipartFile.isEmpty()) {
+				continue;
+			}
+				
+			String fileName = fileManager.fileSave(multipartFile, realPath);
+			
+			//DB에 Insert
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			boardFileDTO.setNum(bbsDTO.getNum());
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriName(multipartFile.getOriginalFilename());
+					
+			result = qnaDAO.setBoardFileAdd(boardFileDTO);
+					
+			}
+		
+		return result;
+	}
+	
+	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
@@ -131,6 +165,12 @@ public class QnaService implements BoardService {
 			
 		}
 		return result;
+	}
+	
+	@Override
+	public int setBoardFileDelete(Long fileNum) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

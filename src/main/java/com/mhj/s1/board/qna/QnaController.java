@@ -145,6 +145,19 @@ public class QnaController {
 		return modelAndView;
 	}
 	
+	@PostMapping("update")
+	public ModelAndView setBoardUpdate(BoardDTO boardDTO, MultipartFile [] files, HttpSession session, Long [] fileNum) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		int result = qnaService.setBoardUpdate(boardDTO, files, session, fileNum);
+		
+		modelAndView.setViewName("common/result");
+		modelAndView.addObject("result", "수정 성공");
+		modelAndView.addObject("URL", "./list");
+		
+		return modelAndView;
+	}
+	
 	/** Delete **/
 	//Delete
 	@PostMapping("delete")

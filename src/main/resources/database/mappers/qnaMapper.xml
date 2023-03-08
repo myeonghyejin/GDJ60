@@ -96,6 +96,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<!-- UPDATE -->
+	<update id="setBoardUpdate" parameterType="BbsDTO">
+		UPDATE QNA SET TITLE=#{title}, CONTENTS=#{contents}
+		WHERE NUM=#{num}
+	</update>
+	
 	<update id="setStepUpdate" parameterType="QnaDTO">
 		UPDATE QNA SET STEP = STEP + 1
 		WHERE REF = #{ref} AND STEP > #{step}
@@ -104,6 +109,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- DELETE -->
 	<delete id="setBoardDelete" parameterType="BbsDTO">
 		DELETE QNA WHERE NUM = #{num}
+	</delete>
+	
+	<delete id="setBoardFileDelete" parameterType="Long">
+		DELETE QNAFILES WHERE FILENUM=#{fileNum}
 	</delete>
 
 </mapper>

@@ -63,7 +63,7 @@ public class QnaDAO implements BoardDAO {
 	/** Update **/
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
-		return 0;
+		return sqlSession.update(NAMESPACE+"setBoardUpdate", bbsDTO);
 	}
 	
 	public int setStepUpdate(QnaDTO qnaDTO) throws Exception {
@@ -71,10 +71,14 @@ public class QnaDAO implements BoardDAO {
 	}
 	
 	/** Delete **/
-
 	@Override
 	public int setBoardDelete(BbsDTO bbsDTO) throws Exception {
 		return sqlSession.delete(NAMESPACE+"setBoardDelete", bbsDTO);
+	}
+	
+	@Override
+	public int setBoardFileDelete(Long fileNum) throws Exception {
+		return sqlSession.delete(NAMESPACE+"setBoardFileDelete", fileNum);
 	}
 
 }

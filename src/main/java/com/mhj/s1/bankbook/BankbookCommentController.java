@@ -44,9 +44,8 @@ public class BankbookCommentController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-//		bankbookCommentDTO.setWriter(memberDTO.getId());
 		
-		bankbookCommentDTO.setWriter("mhj");
+		bankbookCommentDTO.setWriter(memberDTO.getId());
 		
 		int result = bankbookCommentService.setBoardAdd(bankbookCommentDTO, null, null);
 		
