@@ -28,7 +28,8 @@ $('.deleteCheck').click(function(){
         }
     } else {
         if(count == max) {
-            $('#f'+(idx-1)).remove();
+            idx--;
+            $('#f'+idx).remove();
         } else {
             count++;
         }
