@@ -169,10 +169,9 @@ public class QnaService implements BoardService {
 		return result;
 	}
 	
-	@Override
 	public int setBoardFileDelete(Long fileNum) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		//HDD에 파일 삭제
+		return qnaDAO.setBoardFileDelete(fileNum);
 	}
 	
 }
