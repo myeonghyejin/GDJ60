@@ -2,12 +2,13 @@ package com.mhj.s1.member;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,20 +50,49 @@ public class MemberController {
 		
 	//getMemberLogin (입력 폼으로 이동)
 	@RequestMapping(value="login", method=RequestMethod.GET)
-	public ModelAndView getMemberLogin(ModelAndView modelAndView) throws Exception {
+	public ModelAndView getMemberLogin(HttpServletRequest request) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("member/memberLogin");
+		
+//		Cookie [] cookies = request.getCookies();
+//		
+//		for(Cookie cookie:cookies) {
+//			System.out.println(cookie.getName());
+//			System.out.println(cookie.getValue());
+//			System.out.println(cookie.getDomain());
+//			System.out.println(cookie.getPath());
+//			System.out.println("-----------------");
+//			if(cookie.getName().equals("rememberId")) {
+//				modelAndView.addObject("rememberId", cookie.getValue());
+//				break;
+//			}
+//		}
+		
 		return modelAndView;
 	}
 	
 	//getMemberLogin (DB에 INSERT)
-	@RequestMapping(value="login", method=RequestMethod.POST)
-	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
+	@PostMapping("login")
+	public ModelAndView getMemberLogin(MemberDTO memberDTO, HttpServletRequest request, HttpServletResponse response, String remember) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
-		memberDTO = memberService.getMemberLogin(memberDTO);
-		if(memberDTO != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("member", memberDTO);	
+		
+		System.out.println("Remember : " + remember);
+		
+		if(remember != null && remember.equals("remember")) {
+			Cookie cookie = new Cookie("rememberId", memberDTO.getId());
+			cookie.setMaxAge(60*60*24*7);	//초 단위, -1 영구히 저장
+			response.addCookie(cookie);
+		} else {
+			Cookie cookie = new Cookie("rememberId", "");
+			cookie.setMaxAge(0);
+			response.addCookie(cookie);
 		}
+		
+//		memberDTO = memberService.getMemberLogin(memberDTO);
+//		if(memberDTO != null) {
+//			HttpSession session = request.getSession();
+//			session.setAttribute("member", memberDTO);	
+//		}
 		modelAndView.setViewName("redirect:../");
 		return modelAndView;
 	}
@@ -131,6 +161,5 @@ public class MemberController {
 	}
 		
 	/** DELETE **/
-
 
 }
