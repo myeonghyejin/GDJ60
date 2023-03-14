@@ -143,7 +143,7 @@ public class QnaService implements BoardService {
 		
 		return result;
 	}
-	
+
 	@Override
 	public int setBoardUpdate(BbsDTO bbsDTO) throws Exception {
 		// TODO Auto-generated method stub
